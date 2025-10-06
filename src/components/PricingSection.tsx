@@ -2,9 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useState } from "react";
 
 const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const [subscriptionType, setSubscriptionType] = useState<"new" | "renewal">("new");
+  
   const plans = [
     {
       name: "Базовый",
@@ -45,9 +48,34 @@ const PricingSection = () => {
         <h2 className={`font-heading font-bold text-4xl md:text-5xl text-center mb-4 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
           Тарифы
         </h2>
-        <p className={`text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
+        <p className={`text-center text-gray-600 text-lg mb-8 max-w-2xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
           Выберите оптимальный план для вашего бизнеса
         </p>
+
+        <div className={`flex justify-center mb-12 ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
+          <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
+            <button
+              onClick={() => setSubscriptionType("new")}
+              className={`px-8 py-3 rounded-full font-semibold transition-all ${
+                subscriptionType === "new"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "text-gray-700 hover:text-gray-900"
+              }`}
+            >
+              Новая подписка
+            </button>
+            <button
+              onClick={() => setSubscriptionType("renewal")}
+              className={`px-8 py-3 rounded-full font-semibold transition-all ${
+                subscriptionType === "renewal"
+                  ? "bg-blue-600 text-white shadow-md"
+                  : "text-gray-700 hover:text-gray-900"
+              }`}
+            >
+              Продление подписки
+            </button>
+          </div>
+        </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
