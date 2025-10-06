@@ -7,7 +7,14 @@ import { useState } from "react";
 const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [subscriptionType, setSubscriptionType] = useState<"new" | "renewal">("new");
-  const [marketSubscription, setMarketSubscription] = useState(false);
+  const [marketSubscriptions, setMarketSubscriptions] = useState<{[key: number]: boolean}>({});
+  
+  const toggleMarketSubscription = (index: number) => {
+    setMarketSubscriptions(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
   
   const plans = [
     {
@@ -109,24 +116,24 @@ const PricingSection = () => {
                 
                 {subscriptionType === "renewal" && (
                   <button
-                    onClick={() => setMarketSubscription(!marketSubscription)}
+                    onClick={() => toggleMarketSubscription(index)}
                     className={`flex items-center gap-3 mb-4 p-3 rounded-lg border-2 transition-all w-full ${
-                      marketSubscription
+                      marketSubscriptions[index]
                         ? "bg-blue-50 border-blue-600"
                         : "bg-gray-50 border-gray-300 hover:border-gray-400"
                     }`}
                   >
                     <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all ${
-                      marketSubscription
+                      marketSubscriptions[index]
                         ? "bg-blue-600 border-blue-600"
                         : "bg-white border-gray-400"
                     }`}>
-                      {marketSubscription && (
+                      {marketSubscriptions[index] && (
                         <Icon name="Check" size={14} className="text-white" />
                       )}
                     </div>
                     <span className={`text-sm font-medium ${
-                      marketSubscription ? "text-blue-700" : "text-gray-700"
+                      marketSubscriptions[index] ? "text-blue-700" : "text-gray-700"
                     }`}>
                       Подписка на Маркет
                     </span>
