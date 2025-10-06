@@ -148,4 +148,24 @@
       transform: translateY(0);
     }
   }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translate(-50%, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-50%, -8px) rotate(1deg);
+    }
+    50% {
+      transform: translate(-50%, -12px) rotate(-1deg);
+    }
+    75% {
+      transform: translate(-50%, -8px) rotate(1deg);
+    }
+  }
 }
