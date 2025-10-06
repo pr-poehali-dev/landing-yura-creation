@@ -21,7 +21,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-white">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
@@ -74,8 +74,17 @@ const Index = () => {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url('https://cdn.poehali.dev/files/5089df72-01d4-4dc5-9c9b-b594c380383d.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-8 animate-fade-in">
             <div className="inline-flex items-center gap-2 text-blue-600 font-semibold mb-6">
               <span>ЛУЧШАЯ CRM В РОССИИ</span>
