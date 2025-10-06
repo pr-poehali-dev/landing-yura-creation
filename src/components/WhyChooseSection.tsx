@@ -1,20 +1,23 @@
 import Icon from "@/components/ui/icon";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const WhyChooseSection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+  
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-[1460px] mx-auto">
         <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] px-8 md:px-16 py-16 text-white">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-center mb-4 text-white">
+          <h2 className={`font-heading font-bold text-3xl md:text-4xl text-center mb-4 text-white ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
             Почему Выбирают Битрикс24?
           </h2>
-          <p className="text-center text-white/90 text-lg mb-12 max-w-3xl mx-auto">
+          <p className={`text-center text-white/90 text-lg mb-12 max-w-3xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
             Битрикс24 — это комплексное решение для управления бизнес-процессами,
             объединяющее CRM, задачи, документы, чаты и видеозвонки в единой системе.
           </p>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
+            <div className={`text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
                 <Icon name="Users" size={40} className="text-white" />
               </div>
@@ -26,7 +29,7 @@ const WhyChooseSection = () => {
               </p>
             </div>
 
-            <div className="text-center">
+            <div className={`text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
                 <Icon name="Cloud" size={40} className="text-white" />
               </div>
@@ -38,7 +41,7 @@ const WhyChooseSection = () => {
               </p>
             </div>
 
-            <div className="text-center">
+            <div className={`text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
                 <Icon name="Smartphone" size={40} className="text-white" />
               </div>

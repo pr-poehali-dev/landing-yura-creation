@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const PricingSection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const plans = [
     {
       name: "Базовый",
@@ -38,12 +40,12 @@ const PricingSection = () => {
   ];
 
   return (
-    <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section ref={ref} id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-[1460px] mx-auto">
-        <h2 className="font-heading font-bold text-4xl md:text-5xl text-center mb-4">
+        <h2 className={`font-heading font-bold text-4xl md:text-5xl text-center mb-4 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
           Тарифы
         </h2>
-        <p className="text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto">
+        <p className={`text-center text-gray-600 text-lg mb-16 max-w-2xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
           Выберите оптимальный план для вашего бизнеса
         </p>
 
@@ -51,7 +53,7 @@ const PricingSection = () => {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`relative border-2 ${
+              className={`relative border-2 ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
                 plan.popular
                   ? "border-blue-600 shadow-2xl scale-105"
                   : "border-gray-200 shadow-lg"

@@ -1,14 +1,17 @@
 import Icon from "@/components/ui/icon";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const AboutSection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+  
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section ref={ref} id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-[1460px] mx-auto">
-        <h2 className="font-heading font-bold text-4xl md:text-5xl text-center mb-16">
+        <h2 className={`font-heading font-bold text-4xl md:text-5xl text-center mb-16 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
           О сервисе
         </h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <div className={`space-y-6 ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
             <p className="text-lg text-gray-700 leading-relaxed">
               Битрикс24 — это комплексная CRM-система, которая объединяет все
               инструменты для успешного ведения бизнеса в одном месте.
@@ -19,7 +22,7 @@ const AboutSection = () => {
               продажи.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-3xl p-12 text-center">
+          <div className={`bg-gradient-to-br from-blue-100 to-blue-50 rounded-3xl p-12 text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
             <Icon name="Building2" size={80} className="text-blue-600 mx-auto mb-6" />
             <p className="text-2xl font-heading font-bold text-gray-900">
               10,000+ компаний доверяют нам

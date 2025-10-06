@@ -1,7 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const ReviewsSection = () => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
   const reviews = [
     {
       name: "Александр Иванов",
@@ -24,15 +26,15 @@ const ReviewsSection = () => {
   ];
 
   return (
-    <section id="reviews" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section ref={ref} id="reviews" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1460px] mx-auto">
-        <h2 className="font-heading font-bold text-4xl md:text-5xl text-center mb-16">
+        <h2 className={`font-heading font-bold text-4xl md:text-5xl text-center mb-16 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
           Отзывы
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
           {reviews.map((review, index) => (
-            <Card key={index} className="border-0 shadow-lg bg-white">
+            <Card key={index} className={`border-0 shadow-lg bg-white ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
               <CardContent className="p-8">
                 <div className="flex gap-1 mb-4">
                   {[...Array(review.rating)].map((_, i) => (
