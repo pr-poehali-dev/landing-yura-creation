@@ -41,7 +41,7 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
       <nav className={`w-full max-w-[1460px] bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-full shadow-lg transition-all duration-300 ${scrolled ? 'md:scale-95' : 'md:scale-100'}`}>
         <div className="px-4 sm:px-6 lg:px-[28px]">
           <div className="flex items-center justify-between h-20">
-            <div className="flex items-center gap-3 bg-blue-100 px-6 py-3 rounded-full -ml-5">
+            <div className="flex items-center gap-3 bg-blue-100 px-6 py-4 rounded-full -ml-5">
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                 <Icon name="LayoutGrid" size={20} className="text-white" />
               </div>
@@ -84,7 +84,7 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
             </div>
 
             <div className="flex items-center gap-4 -mr-5">
-              <Button className="hidden md:flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 h-12 rounded-full font-semibold shadow-lg">
+              <Button className="hidden md:flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 h-14 rounded-full font-semibold shadow-lg">
                 Купить подписку
               </Button>
               
