@@ -7,6 +7,7 @@ import { useState } from "react";
 const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [subscriptionType, setSubscriptionType] = useState<"new" | "renewal">("new");
+  const [marketSubscription, setMarketSubscription] = useState(false);
   
   const plans = [
     {
@@ -107,12 +108,29 @@ const PricingSection = () => {
                 </div>
                 
                 {subscriptionType === "renewal" && (
-                  <div className="flex items-center gap-2 mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
-                    <Icon name="Check" size={18} className="text-blue-600 flex-shrink-0" />
-                    <span className="text-sm text-blue-700 font-medium">
+                  <button
+                    onClick={() => setMarketSubscription(!marketSubscription)}
+                    className={`flex items-center gap-3 mb-4 p-3 rounded-lg border-2 transition-all w-full ${
+                      marketSubscription
+                        ? "bg-blue-50 border-blue-600"
+                        : "bg-gray-50 border-gray-300 hover:border-gray-400"
+                    }`}
+                  >
+                    <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all ${
+                      marketSubscription
+                        ? "bg-blue-600 border-blue-600"
+                        : "bg-white border-gray-400"
+                    }`}>
+                      {marketSubscription && (
+                        <Icon name="Check" size={14} className="text-white" />
+                      )}
+                    </div>
+                    <span className={`text-sm font-medium ${
+                      marketSubscription ? "text-blue-700" : "text-gray-700"
+                    }`}>
                       Подписка на Маркет
                     </span>
-                  </div>
+                  </button>
                 )}
                 
                 <ul className="space-y-4 mb-8">
