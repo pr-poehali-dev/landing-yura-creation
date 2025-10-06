@@ -22,12 +22,12 @@ const HeroSection = () => {
         </div>
 
         <h1 className="font-heading font-bold text-5xl md:text-7xl text-center mb-6 animate-scale-in">
-          Лучшая <span className="text-blue-600 relative inline-block">
+          Лучшая <span className="text-blue-600 relative inline-block px-4">
             CRM
             <img 
               src="https://cdn.poehali.dev/files/8dbe9fa5-1ce6-436a-b136-80125156b80c.png" 
               alt="" 
-              className="absolute -bottom-2 left-0 w-full h-auto"
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[120%] h-auto"
             />
           </span> Система Для<br />Вашего Бизнеса
         </h1>
