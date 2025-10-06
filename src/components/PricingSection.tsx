@@ -11,7 +11,8 @@ const PricingSection = () => {
   const plans = [
     {
       name: "Базовый",
-      price: "1 990",
+      priceNew: "1 990",
+      priceRenewal: "1 490",
       features: [
         "До 5 пользователей",
         "Базовая CRM",
@@ -21,7 +22,8 @@ const PricingSection = () => {
     },
     {
       name: "Профессиональный",
-      price: "4 990",
+      priceNew: "4 990",
+      priceRenewal: "3 990",
       popular: true,
       features: [
         "До 50 пользователей",
@@ -32,7 +34,8 @@ const PricingSection = () => {
     },
     {
       name: "Корпоративный",
-      price: "9 990",
+      priceNew: "9 990",
+      priceRenewal: "7 990",
       features: [
         "Неограниченно пользователей",
         "Все возможности + API",
@@ -98,10 +101,20 @@ const PricingSection = () => {
                 </h3>
                 <div className="mb-6">
                   <span className="text-5xl font-heading font-bold">
-                    {plan.price}
+                    {subscriptionType === "new" ? plan.priceNew : plan.priceRenewal}
                   </span>
                   <span className="text-gray-600 ml-2">₽/мес</span>
                 </div>
+                
+                {subscriptionType === "renewal" && (
+                  <div className="flex items-center gap-2 mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                    <Icon name="Check" size={18} className="text-blue-600 flex-shrink-0" />
+                    <span className="text-sm text-blue-700 font-medium">
+                      Подписка на Маркет
+                    </span>
+                  </div>
+                )}
+                
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
