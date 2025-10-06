@@ -84,7 +84,7 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
             </div>
 
             <div className="flex items-center gap-4 -mr-1">
-              <Button className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-full font-semibold shadow-lg">
+              <Button className="hidden md:flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-8 h-12 rounded-full font-semibold shadow-lg">
                 Купить подписку
               </Button>
               
