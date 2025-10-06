@@ -26,7 +26,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <div className="fixed top-0 left-0 right-0 z-50 pt-0 md:pt-[70px] px-0 md:px-4">
         <nav className="bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-[30px] shadow-lg">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1460px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-20">
               <div className="flex items-center gap-3 bg-blue-100 px-6 py-3 rounded-full">
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -89,7 +89,7 @@ const Index = () => {
 
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl animate-fade-in">
-            <div className="max-w-7xl mx-auto px-4 py-6 space-y-4">
+            <div className="max-w-[1460px] mx-auto px-4 py-6 space-y-4">
               <button
                 onClick={() => scrollToSection("about")}
                 className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors rounded-lg"
@@ -138,7 +138,7 @@ const Index = () => {
             backgroundRepeat: 'no-repeat'
           }}
         />
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-[1460px] mx-auto relative z-10">
           <div className="text-center mb-8 animate-fade-in">
             <div className="inline-flex items-center gap-2 text-blue-600 font-semibold mb-6">
               <span>ЛУЧШАЯ CRM В РОССИИ</span>
@@ -189,7 +189,7 @@ const Index = () => {
       </section>
 
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1460px] mx-auto">
           <h2 className="font-heading font-bold text-4xl md:text-5xl text-center mb-16">
             О сервисе
           </h2>
@@ -216,7 +216,7 @@ const Index = () => {
       </section>
 
       <section id="features" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1460px] mx-auto">
           <h2 className="font-heading font-bold text-4xl md:text-5xl text-center mb-4">
             Возможности
           </h2>
@@ -264,7 +264,7 @@ const Index = () => {
       </section>
 
       <section id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1460px] mx-auto">
           <h2 className="font-heading font-bold text-4xl md:text-5xl text-center mb-4">
             Тарифы
           </h2>
@@ -358,7 +358,7 @@ const Index = () => {
       </section>
 
       <section id="reviews" className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1460px] mx-auto">
           <h2 className="font-heading font-bold text-4xl md:text-5xl text-center mb-16">
             Отзывы
           </h2>
@@ -468,7 +468,7 @@ const Index = () => {
       </section>
 
       <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-[1460px] mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center gap-2 mb-4">
