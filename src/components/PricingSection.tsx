@@ -92,75 +92,84 @@ const PricingSection = () => {
           {plans.map((plan, index) => (
             <Card
               key={index}
-              className={`relative border-2 ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
+              className={`relative overflow-hidden ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
                 plan.popular
-                  ? "border-blue-600 shadow-2xl scale-105"
-                  : "border-gray-200 shadow-lg"
-              } hover:shadow-xl transition-all`}
+                  ? "border-2 border-blue-400 bg-gradient-to-br from-blue-50 to-white shadow-2xl scale-105"
+                  : "border border-gray-200 bg-white shadow-lg"
+              } hover:shadow-xl transition-all rounded-3xl`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
-                  Популярный
+                <div className="absolute top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-full text-xs font-semibold">
+                  Рекомендуем
                 </div>
               )}
               <CardContent className="p-8">
-                <h3 className="font-heading font-bold text-2xl mb-4">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
+                    plan.popular ? "bg-blue-500" : "bg-blue-100"
+                  }`}>
+                    <Icon name={index === 0 ? "User" : index === 1 ? "Rocket" : "Building2"} size={24} className={plan.popular ? "text-white" : "text-blue-600"} />
+                  </div>
+                </div>
+                <h3 className="font-heading font-bold text-2xl mb-2 text-gray-900">
                   {plan.name}
                 </h3>
+                <p className="text-sm text-gray-600 mb-6">
+                  {index === 0 ? "Для одиночных пользователей Битрикс24" : index === 1 ? "Отлично подходит для развивающихся агентств и команд, которым нужны удобные инструменты" : "Индивидуальные решения для больших команд и организаций, использующих Битрикс24"}
+                </p>
                 <div className="mb-6">
-                  <span className="text-5xl font-heading font-bold">
-                    {subscriptionType === "new" ? plan.priceNew : plan.priceRenewal}
+                  <span className="text-4xl font-heading font-bold text-gray-900">
+                    ₽{subscriptionType === "new" ? plan.priceNew : plan.priceRenewal}
                   </span>
-                  <span className="text-gray-600 ml-2">₽/мес</span>
+                  <span className="text-gray-500 text-sm ml-2">/месяц</span>
                 </div>
+                
+                <Button
+                  className={`w-full py-4 rounded-xl font-semibold mb-6 ${
+                    plan.popular
+                      ? "bg-blue-500 hover:bg-blue-600 text-white"
+                      : "bg-blue-50 hover:bg-blue-100 text-gray-800"
+                  }`}
+                >
+                  ВЫБРАТЬ ТАРИФ
+                </Button>
                 
                 {subscriptionType === "renewal" && (
                   <button
                     onClick={() => toggleMarketSubscription(index)}
-                    className={`flex items-center gap-3 mb-4 p-3 rounded-lg border-2 transition-all w-full ${
+                    className={`flex items-center gap-3 mb-6 p-3 rounded-lg transition-all w-full ${
                       marketSubscriptions[index]
-                        ? "bg-blue-50 border-blue-600"
-                        : "bg-gray-50 border-gray-300 hover:border-gray-400"
+                        ? "bg-blue-50"
+                        : "hover:bg-gray-50"
                     }`}
                   >
-                    <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 transition-all ${
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
                       marketSubscriptions[index]
-                        ? "bg-blue-600 border-blue-600"
-                        : "bg-white border-gray-400"
+                        ? "bg-blue-500 border-blue-500"
+                        : "bg-white border-gray-300"
                     }`}>
                       {marketSubscriptions[index] && (
                         <Icon name="Check" size={14} className="text-white" />
                       )}
                     </div>
-                    <span className={`text-sm font-medium ${
-                      marketSubscriptions[index] ? "text-blue-700" : "text-gray-700"
-                    }`}>
+                    <span className="text-sm font-medium text-gray-700">
                       Подписка на Маркет
                     </span>
                   </button>
                 )}
                 
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <Icon
                         name="Check"
-                        size={20}
-                        className="text-green-600 mt-1 flex-shrink-0"
+                        size={18}
+                        className="text-blue-500 mt-0.5 flex-shrink-0"
                       />
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-sm text-gray-600">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <Button
-                  className={`w-full py-6 rounded-full font-semibold ${
-                    plan.popular
-                      ? "bg-blue-600 hover:bg-blue-700 text-white"
-                      : "bg-gray-100 hover:bg-gray-200 text-gray-900"
-                  }`}
-                >
-                  Выбрать тариф
-                </Button>
               </CardContent>
             </Card>
           ))}
