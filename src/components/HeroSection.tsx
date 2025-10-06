@@ -22,11 +22,13 @@ const HeroSection = () => {
         </div>
 
         <h1 className="font-heading font-bold text-5xl md:text-7xl text-center mb-6 animate-scale-in">
-          Лучшая <span className="text-blue-600 relative">
+          Лучшая <span className="text-blue-600 relative inline-block">
             CRM
-            <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 200 8" fill="none">
-              <path d="M1 5.5C50 1.5 150 1.5 199 5.5" stroke="#2563EB" strokeWidth="3" strokeLinecap="round"/>
-            </svg>
+            <img 
+              src="https://cdn.poehali.dev/files/8dbe9fa5-1ce6-436a-b136-80125156b80c.png" 
+              alt="" 
+              className="absolute -bottom-2 left-0 w-full h-auto"
+            />
           </span> Система Для<br />Вашего Бизнеса
         </h1>
 
