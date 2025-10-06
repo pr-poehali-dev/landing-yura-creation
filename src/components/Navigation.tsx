@@ -10,7 +10,7 @@ interface NavigationProps {
 const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: NavigationProps) => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-0 md:pt-[70px] px-0 md:px-4">
-      <nav className="w-full max-w-[1460px] bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-[30px] shadow-lg">
+      <nav className="w-full max-w-[1460px] bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-full shadow-lg">
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-3 bg-blue-100 px-6 py-3 rounded-full">
