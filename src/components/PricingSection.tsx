@@ -19,36 +19,59 @@ const PricingSection = () => {
   const plans = [
     {
       name: "Базовый",
-      priceNew: "1 990",
-      priceRenewal: "1 490",
+      priceNew: "1 590",
+      priceRenewal: "1 390",
+      description: "Для одиночных пользователей Битрикс24",
       features: [
         "До 5 пользователей",
-        "Базовая CRM",
-        "Email поддержка",
-        "5 ГБ хранилище"
+        "100 ГБ дискового пространства",
+        "CRM + лидогенерация",
+        "Задачи и проекты",
+        "Контакт-центр",
+        "Сайты и магазины"
+      ]
+    },
+    {
+      name: "Стандарт",
+      priceNew: "3 590",
+      priceRenewal: "2 990",
+      description: "Для малых команд с базовыми потребностями",
+      features: [
+        "До 50 пользователей",
+        "1 ТБ дискового пространства",
+        "CRM + автоматизация + аналитика",
+        "Интернет-магазин",
+        "Маркетинг и продажи",
+        "Совместная работа"
       ]
     },
     {
       name: "Профессиональный",
-      priceNew: "4 990",
-      priceRenewal: "3 990",
+      priceNew: "7 190",
+      priceRenewal: "5 990",
       popular: true,
+      description: "Отлично подходит для развивающихся агентств и команд",
       features: [
-        "До 50 пользователей",
-        "Полная CRM + автоматизация",
-        "Приоритетная поддержка",
-        "100 ГБ хранилище"
+        "До 100 пользователей",
+        "3 ТБ дискового пространства",
+        "Администрирование",
+        "Бизнес-процессы",
+        "Продажи через мессенджеры",
+        "HR и автоматизация"
       ]
     },
     {
-      name: "Корпоративный",
-      priceNew: "9 990",
-      priceRenewal: "7 990",
+      name: "Энтерпрайз",
+      priceNew: "11 990",
+      priceRenewal: "9 990",
+      description: "Индивидуальные решения для больших организаций",
       features: [
-        "Неограниченно пользователей",
-        "Все возможности + API",
+        "От 250 пользователей",
+        "10 ТБ дискового пространства",
+        "Все возможности Профессионального",
         "Персональный менеджер",
-        "1 ТБ хранилище"
+        "Расширенная безопасность",
+        "Индивидуальная настройка"
       ]
     }
   ];
@@ -88,7 +111,7 @@ const PricingSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto">
           {plans.map((plan, index) => (
             <Card
               key={index}
@@ -103,19 +126,19 @@ const PricingSection = () => {
                   Рекомендуем
                 </div>
               )}
-              <CardContent className="p-8">
+              <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
                     plan.popular ? "bg-blue-500" : "bg-blue-100"
                   }`}>
-                    <Icon name={index === 0 ? "User" : index === 1 ? "Rocket" : "Building2"} size={24} className={plan.popular ? "text-white" : "text-blue-600"} />
+                    <Icon name={index === 0 ? "User" : index === 1 ? "Users" : index === 2 ? "Rocket" : "Building2"} size={24} className={plan.popular ? "text-white" : "text-blue-600"} />
                   </div>
                 </div>
                 <h3 className="font-heading font-bold text-2xl mb-2 text-gray-900">
                   {plan.name}
                 </h3>
-                <p className="text-sm text-gray-600 mb-6">
-                  {index === 0 ? "Для одиночных пользователей Битрикс24" : index === 1 ? "Отлично подходит для развивающихся агентств и команд, которым нужны удобные инструменты" : "Индивидуальные решения для больших команд и организаций, использующих Битрикс24"}
+                <p className="text-sm text-gray-600 mb-6 min-h-[40px]">
+                  {plan.description}
                 </p>
                 <div className="mb-6">
                   <span className="text-4xl font-heading font-bold text-gray-900">
