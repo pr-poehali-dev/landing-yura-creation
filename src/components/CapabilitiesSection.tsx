@@ -6,32 +6,32 @@ const CapabilitiesSection = () => {
   
   const capabilities = [
     {
-      icon: "Filter",
+      iconUrl: "https://cdn.poehali.dev/files/aaa41dd3-9007-4942-ba60-e2a8190df158.png",
       title: "CRM и продажи",
       description: "Управляйте воронкой продаж, автоматизируйте бизнес-процессы, анализируйте эффективность менеджеров."
     },
     {
-      icon: "ListChecks",
+      iconUrl: "https://cdn.poehali.dev/files/8e50949b-fffa-4dfa-b288-c4b23ed8f172.png",
       title: "Задачи и проекты",
       description: "Гибкое управление задачами, контроль сроков, автоматизация бизнес-процессов, канбан-доски и диаграммы Ганта."
     },
     {
-      icon: "MessageSquare",
+      iconUrl: "https://cdn.poehali.dev/files/3d674af2-eaa9-4b9d-be8c-ce6f4783435d.png",
       title: "Коммуникации",
       description: "Корпоративный чат, видеозвонки, рабочие группы, интеграция с почтой и соцсетями."
     },
     {
-      icon: "FileText",
+      iconUrl: "https://cdn.poehali.dev/files/f0f9b68e-ca9a-47d6-adb9-fb7789e0f51d.png",
       title: "Документы",
       description: "Облачное хранилище документов с совместным доступом, версионирование и история изменений."
     },
     {
-      icon: "Phone",
+      iconUrl: "https://cdn.poehali.dev/files/2d1e5244-9a6a-48ff-9927-cedb975c94ae.png",
       title: "Телефония",
       description: "Виртуальная АТС, звонки через интернет, запись разговоров и аналитика входящих/исходящих звонков."
     },
     {
-      icon: "PieChart",
+      iconUrl: "https://cdn.poehali.dev/files/aaa41dd3-9007-4942-ba60-e2a8190df158.png",
       title: "Аналитика",
       description: "Мощные бизнес-аналитические отчеты, KPI сотрудников, анализ воронки продаж и эффективности рекламы."
     }
@@ -53,8 +53,8 @@ const CapabilitiesSection = () => {
               key={index} 
               className={`bg-gray-50/60 rounded-xl p-8 hover:bg-gray-100/60 transition-all duration-300 ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}
             >
-              <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-5">
-                <Icon name={capability.icon} size={24} className="text-white" />
+              <div className="mb-5">
+                <img src={capability.iconUrl} alt={capability.title} className="w-12 h-12" />
               </div>
               <h3 className="font-heading font-bold text-lg mb-3 text-gray-900">
                 {capability.title}
