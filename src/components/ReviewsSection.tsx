@@ -1,9 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useState } from "react";
 
 const ReviewsSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const reviews = [
     {
       name: "Анна К.",
@@ -38,7 +40,70 @@ const ReviewsSection = () => {
           Узнайте, что говорят о Битрикс24 компании, которые уже используют эту систему
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Mobile Slider */}
+        <div className="md:hidden">
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {reviews.map((review, index) => (
+                <div 
+                  key={index} 
+                  className="w-full flex-shrink-0 px-4"
+                >
+                  <Card 
+                    className={`border-0 rounded-3xl overflow-hidden ${
+                      review.featured 
+                        ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-2xl' 
+                        : 'bg-white shadow-lg'
+                    }`}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex flex-col items-center text-center mb-6">
+                        <div className="w-16 h-16 rounded-full overflow-hidden mb-4 ring-4 ring-white/20">
+                          <Icon 
+                            name="User" 
+                            size={32} 
+                            className={`w-full h-full p-3 ${review.featured ? 'text-white bg-white/20' : 'text-blue-600 bg-blue-100'}`} 
+                          />
+                        </div>
+                        <h3 className={`font-heading font-bold text-lg mb-1 ${review.featured ? 'text-white' : 'text-gray-900'}`}>
+                          {review.name}
+                        </h3>
+                        <p className={`text-sm ${review.featured ? 'text-white/80' : 'text-gray-600'}`}>
+                          {review.role}
+                        </p>
+                      </div>
+                      <p className={`leading-relaxed text-center text-sm ${review.featured ? 'text-white/95' : 'text-gray-700'}`}>
+                        "{review.text}"
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Dots Navigation */}
+          <div className="flex justify-center gap-2 mt-6">
+            {reviews.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  currentSlide === index 
+                    ? 'bg-blue-600 w-6' 
+                    : 'bg-gray-300'
+                }`}
+                aria-label={`Отзыв ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-8">
           {reviews.map((review, index) => (
             <Card 
               key={index} 
