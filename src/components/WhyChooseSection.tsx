@@ -57,8 +57,8 @@ const WhyChooseSection = () => {
 
           <div className="grid md:grid-cols-3 gap-8 relative z-10">
             <div className={`text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
-              <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Icon name="Users" size={40} className="text-white" />
+              <div className="flex items-center justify-center mx-auto mb-6">
+                <img src="https://cdn.poehali.dev/files/1a040f83-8a4f-4634-86ca-fed5f97d7d52.png" alt="Для всей компании" className="w-16 h-16" />
               </div>
               <h3 className="font-heading font-bold text-xl mb-3 text-white">
                 Для всей компании
@@ -69,8 +69,8 @@ const WhyChooseSection = () => {
             </div>
 
             <div className={`text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
-              <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Icon name="Cloud" size={40} className="text-white" />
+              <div className="flex items-center justify-center mx-auto mb-6">
+                <img src="https://cdn.poehali.dev/files/faebe2d9-ee5c-4a7b-8afa-abc5d3dbc830.png" alt="Облачное решение" className="w-16 h-16" />
               </div>
               <h3 className="font-heading font-bold text-xl mb-3 text-white">
                 Облачное решение
@@ -81,8 +81,8 @@ const WhyChooseSection = () => {
             </div>
 
             <div className={`text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
-              <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Icon name="Smartphone" size={40} className="text-white" />
+              <div className="flex items-center justify-center mx-auto mb-6">
+                <img src="https://cdn.poehali.dev/files/3818dc4b-bc3b-41ca-863c-5ede2f12bbe5.png" alt="Мобильные приложения" className="w-16 h-16" />
               </div>
               <h3 className="font-heading font-bold text-xl mb-3 text-white">
                 Мобильные приложения
