@@ -124,9 +124,19 @@ const CTASection = () => {
                 checked={formData.consent}
                 onCheckedChange={(checked) => handleChange("consent", checked as boolean)}
                 className="bg-white/90 border-0 mt-1"
+                required
               />
               <label htmlFor="consent" className="text-sm text-white cursor-pointer">
-                Я даю согласие на обработку персональных данных
+                Я даю согласие на обработку персональных данных в соответствии с{' '}
+                <a 
+                  href="https://disk.360.yandex.ru/i/0Ul7s4KQuf-TsA" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="underline hover:text-white/80"
+                >
+                  Политикой конфиденциальности
+                </a>
+                {' '}(обязательно)
               </label>
             </div>
 

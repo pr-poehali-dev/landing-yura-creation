@@ -19,7 +19,7 @@ const CookieConsent = () => {
 
   const handleDecline = () => {
     localStorage.setItem('cookieConsent', 'declined');
-    setIsVisible(false);
+    window.location.href = 'https://ya.ru';
   };
 
   if (!isVisible) return null;

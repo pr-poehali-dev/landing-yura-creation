@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import Icon from "@/components/ui/icon";
+import { executeRecaptcha } from "@/utils/recaptcha";
 
 interface TariffModalProps {
   isOpen: boolean;
@@ -16,7 +18,8 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
     phone: "",
     email: "",
     company: "",
-    message: ""
+    message: "",
+    consent: false
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -29,6 +32,8 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
     setSubmitStatus('idle');
 
     try {
+      const recaptchaToken = await executeRecaptcha('submit_tariff_form');
+
       const response = await fetch('https://functions.poehali.dev/95830b61-9b82-45e6-b96c-bcb5ef3bbf7b', {
         method: 'POST',
         headers: {
@@ -36,7 +41,8 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
         },
         body: JSON.stringify({
           ...formData,
-          tariff: tariffName
+          tariff: tariffName,
+          recaptchaToken
         })
       });
 
@@ -44,7 +50,7 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
         setSubmitStatus('success');
         setTimeout(() => {
           onClose();
-          setFormData({ name: "", phone: "", email: "", company: "", message: "" });
+          setFormData({ name: "", phone: "", email: "", company: "", message: "", consent: false });
           setSubmitStatus('idle');
         }, 2000);
       } else {
@@ -57,7 +63,7 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
     }
   };
 
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: string, value: string | boolean) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -121,6 +127,28 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
               className="bg-gray-50 border-gray-200 rounded-2xl px-4 py-4 min-h-[100px] resize-none"
             />
 
+            <div className="flex items-start gap-3 pt-2">
+              <Checkbox
+                id="modal-consent"
+                checked={formData.consent}
+                onCheckedChange={(checked) => handleChange("consent", checked as boolean)}
+                className="mt-1"
+                required
+              />
+              <label htmlFor="modal-consent" className="text-sm text-gray-700 cursor-pointer leading-relaxed">
+                Я даю согласие на обработку персональных данных в соответствии с{' '}
+                <a 
+                  href="https://disk.360.yandex.ru/i/0Ul7s4KQuf-TsA" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  Политикой конфиденциальности
+                </a>
+                {' '}(обязательно)
+              </label>
+            </div>
+
             {submitStatus === 'success' && (
               <div className="bg-green-50 text-green-700 p-4 rounded-2xl flex items-center gap-2">
                 <Icon name="CheckCircle" size={20} />
@@ -137,8 +165,8 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
 
             <Button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-semibold text-base"
+              disabled={isSubmitting || !formData.consent}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-2xl font-semibold text-base disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? 'Отправка...' : 'ОТПРАВИТЬ ЗАЯВКУ'}
             </Button>
