@@ -8,7 +8,7 @@ const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [billingPeriod, setBillingPeriod] = useState<"month" | "year">("month");
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  
+
   const plans = [
     {
       name: "Бесплатный",
@@ -25,9 +25,9 @@ const PricingSection = () => {
         "Лента новостей компании",
         "Календарь событий",
         "База знаний",
-        "Мобильное приложение"
+        "Мобильное приложение",
       ],
-      isFree: true
+      isFree: true,
     },
     {
       name: "Базовый",
@@ -46,13 +46,13 @@ const PricingSection = () => {
         "Онлайн-документы и совместная работа",
         "CRM-аналитика и отчеты",
         "Интеграция с 1С",
-        "Техподдержка 24/7"
-      ]
+        "Техподдержка 24/7",
+      ],
     },
     {
       name: "Стандартный",
       priceMonth: "6 990",
-      priceYear: "3 990",
+      priceYear: "5 990",
       popular: true,
       description: "Для растущих команд",
       features: [
@@ -68,13 +68,13 @@ const PricingSection = () => {
         "Права доступа и роли",
         "Отчёты по сотрудникам",
         "Интеграция с сервисами",
-        "Техподдержка с приоритетом"
-      ]
+        "Техподдержка с приоритетом",
+      ],
     },
     {
       name: "Проф",
       priceMonth: "13 990",
-      priceYear: "7 990",
+      priceYear: "11 990",
       description: "Для больших команд",
       features: [
         "До 100 пользователей",
@@ -89,22 +89,32 @@ const PricingSection = () => {
         "Администрирование и безопасность",
         "Управление структурой компании",
         "API и веб-хуки для интеграций",
-        "Персональный менеджер поддержки"
-      ]
-    }
+        "Персональный менеджер поддержки",
+      ],
+    },
   ];
 
   return (
-    <section ref={ref} id="pricing" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section
+      ref={ref}
+      id="pricing"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-white"
+    >
       <div className="max-w-[1460px] mx-auto">
-        <h2 className={`font-heading font-bold text-4xl md:text-5xl text-center mb-4 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
+        <h2
+          className={`font-heading font-bold text-4xl md:text-5xl text-center mb-4 ${isVisible ? "animate-scroll-in" : "opacity-0"}`}
+        >
           Тарифы
         </h2>
-        <p className={`text-center text-gray-600 text-lg mb-8 max-w-2xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
+        <p
+          className={`text-center text-gray-600 text-lg mb-8 max-w-2xl mx-auto ${isVisible ? "animate-scroll-in-delay-1" : "opacity-0"}`}
+        >
           Выберите оптимальный план для вашего бизнеса
         </p>
 
-        <div className={`flex justify-center mb-12 ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
+        <div
+          className={`flex justify-center mb-12 ${isVisible ? "animate-scroll-in-delay-1" : "opacity-0"}`}
+        >
           <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
             <button
               onClick={() => setBillingPeriod("month")}
@@ -125,7 +135,9 @@ const PricingSection = () => {
               }`}
             >
               На год
-              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">-20%</span>
+              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
+                -20%
+              </span>
             </button>
           </div>
         </div>
@@ -133,19 +145,21 @@ const PricingSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto items-start">
           {plans.map((plan, index) => {
             const isHovered = hoveredCard === index;
-            const displayedFeatures = isHovered ? plan.features : plan.features.slice(0, 5);
-            
+            const displayedFeatures = isHovered
+              ? plan.features
+              : plan.features.slice(0, 5);
+
             return (
               <Card
                 key={index}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
-                className={`relative overflow-visible ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
+                className={`relative overflow-visible ${isVisible ? "animate-scroll-in-delay-2" : "opacity-0"} ${
                   plan.popular
                     ? "border-2 border-blue-300 bg-gradient-to-b from-blue-50 to-white shadow-xl"
                     : "border border-gray-200 bg-white shadow-md"
                 } hover:shadow-2xl transition-all duration-300 rounded-3xl ${
-                  isHovered ? 'scale-110 z-10' : 'scale-100'
+                  isHovered ? "scale-110 z-10" : "scale-100"
                 }`}
               >
                 {plan.popular && (
@@ -154,75 +168,98 @@ const PricingSection = () => {
                   </div>
                 )}
                 <CardContent className="p-8 pt-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
-                    plan.popular ? "bg-blue-100" : plan.isFree ? "bg-blue-50" : "bg-gray-50"
-                  }`}>
-                    <Icon 
-                      name={plan.isFree ? "User" : index === 1 ? "User" : index === 2 ? "Rocket" : "Building2"} 
-                      size={32} 
-                      className="text-blue-500" 
-                    />
+                  <div className="flex items-center gap-3 mb-6">
+                    <div
+                      className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
+                        plan.popular
+                          ? "bg-blue-100"
+                          : plan.isFree
+                            ? "bg-blue-50"
+                            : "bg-gray-50"
+                      }`}
+                    >
+                      <Icon
+                        name={
+                          plan.isFree
+                            ? "User"
+                            : index === 1
+                              ? "User"
+                              : index === 2
+                                ? "Rocket"
+                                : "Building2"
+                        }
+                        size={32}
+                        className="text-blue-500"
+                      />
+                    </div>
                   </div>
-                </div>
-                <h3 className="font-heading font-bold text-3xl mb-3 text-gray-900">
-                  {plan.name}
-                </h3>
-                <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                  {plan.description}
-                </p>
-                <div className="mb-8">
-                  {plan.isFree ? (
-                    <>
-                      <span className="text-5xl font-heading font-bold text-gray-900">
-                        ₽0
-                      </span>
-                      <span className="text-gray-400 text-base ml-2">/месяц</span>
-                    </>
-                  ) : (
-                    <>
-                      <span className="text-5xl font-heading font-bold text-gray-900">
-                        ₽{billingPeriod === "month" ? plan.priceMonth : plan.priceYear}
-                      </span>
-                      <span className="text-gray-400 text-base ml-2">/месяц</span>
-                    </>
-                  )}
-                </div>
-                
-                <Button
-                  className={`w-full py-4 rounded-2xl font-semibold mb-8 text-sm uppercase tracking-wide ${
-                    plan.popular
-                      ? "bg-blue-100 hover:bg-blue-200 text-gray-800"
-                      : "bg-blue-50 hover:bg-blue-100 text-gray-800"
-                  }`}
-                >
-                  Выбрать тариф
-                </Button>
-                
-                <ul className="space-y-4">
-                  {displayedFeatures.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <h3 className="font-heading font-bold text-3xl mb-3 text-gray-900">
+                    {plan.name}
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-6 leading-relaxed">
+                    {plan.description}
+                  </p>
+                  <div className="mb-8">
+                    {plan.isFree ? (
+                      <>
+                        <span className="text-5xl font-heading font-bold text-gray-900">
+                          ₽0
+                        </span>
+                        <span className="text-gray-400 text-base ml-2">
+                          /месяц
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-5xl font-heading font-bold text-gray-900">
+                          ₽
+                          {billingPeriod === "month"
+                            ? plan.priceMonth
+                            : plan.priceYear}
+                        </span>
+                        <span className="text-gray-400 text-base ml-2">
+                          /месяц
+                        </span>
+                      </>
+                    )}
+                  </div>
+
+                  <Button
+                    className={`w-full py-4 rounded-2xl font-semibold mb-8 text-sm uppercase tracking-wide ${
+                      plan.popular
+                        ? "bg-blue-100 hover:bg-blue-200 text-gray-800"
+                        : "bg-blue-50 hover:bg-blue-100 text-gray-800"
+                    }`}
+                  >
+                    Выбрать тариф
+                  </Button>
+
+                  <ul className="space-y-4">
+                    {displayedFeatures.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <Icon name="Check" size={14} className="text-white" />
+                        </div>
+                        <span className="text-sm text-gray-600 leading-relaxed">
+                          {feature}
+                        </span>
+                      </li>
+                    ))}
+                    {!isHovered && plan.features.length > 5 && (
+                      <li className="flex items-center gap-2 pt-2">
                         <Icon
-                          name="Check"
-                          size={14}
-                          className="text-white"
+                          name="ChevronDown"
+                          size={16}
+                          className="text-gray-400"
                         />
-                      </div>
-                      <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
-                    </li>
-                  ))}
-                  {!isHovered && plan.features.length > 5 && (
-                    <li className="flex items-center gap-2 pt-2">
-                      <Icon name="ChevronDown" size={16} className="text-gray-400" />
-                      <span className="text-xs text-gray-400 italic">
-                        Ещё {plan.features.length - 5} возможностей
-                      </span>
-                    </li>
-                  )}
-                </ul>
-              </CardContent>
-            </Card>
+                        <span className="text-xs text-gray-400 italic">
+                          Ещё {plan.features.length - 5} возможностей
+                        </span>
+                      </li>
+                    )}
+                  </ul>
+                </CardContent>
+              </Card>
             );
           })}
         </div>
