@@ -125,7 +125,7 @@ const PricingSection = () => {
               }`}
             >
               На год
-              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">-33%</span>
+              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">-20%</span>
             </button>
           </div>
         </div>
