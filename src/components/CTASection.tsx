@@ -4,6 +4,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useState } from "react";
+import { executeRecaptcha } from "@/utils/recaptcha";
 
 const CTASection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
@@ -25,12 +26,18 @@ const CTASection = () => {
     setSubmitStatus('idle');
 
     try {
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptcha('submit_contact_form');
+
       const response = await fetch('https://functions.poehali.dev/95830b61-9b82-45e6-b96c-bcb5ef3bbf7b', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken
+        })
       });
 
       if (response.ok) {
