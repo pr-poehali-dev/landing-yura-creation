@@ -140,84 +140,79 @@ const PricingSection = () => {
                 key={index}
                 onMouseEnter={() => setHoveredCard(index)}
                 onMouseLeave={() => setHoveredCard(null)}
-                className={`relative overflow-hidden ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
+                className={`relative overflow-visible ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
                   plan.popular
-                    ? "border-2 border-blue-400 bg-gradient-to-br from-blue-50 to-white shadow-2xl"
-                    : "border border-gray-200 bg-white shadow-lg"
+                    ? "border-2 border-blue-300 bg-gradient-to-b from-blue-50 to-white shadow-xl"
+                    : "border border-gray-200 bg-white shadow-md"
                 } hover:shadow-2xl transition-all duration-300 rounded-3xl ${
                   isHovered ? 'scale-110 z-10' : 'scale-100'
                 }`}
               >
                 {plan.popular && (
-                  <div className="absolute top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-full text-xs font-semibold">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white px-6 py-2 rounded-full text-sm font-semibold shadow-lg">
                     Рекомендуем
                   </div>
                 )}
-                <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
-                    plan.popular ? "bg-blue-500" : plan.isFree ? "bg-green-100" : "bg-blue-100"
+                <CardContent className="p-8 pt-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
+                    plan.popular ? "bg-blue-100" : plan.isFree ? "bg-blue-50" : "bg-gray-50"
                   }`}>
                     <Icon 
-                      name={plan.isFree ? "Gift" : index === 1 ? "User" : index === 2 ? "Users" : "Rocket"} 
-                      size={24} 
-                      className={plan.popular ? "text-white" : plan.isFree ? "text-green-600" : "text-blue-600"} 
+                      name={plan.isFree ? "User" : index === 1 ? "User" : index === 2 ? "Rocket" : "Building2"} 
+                      size={32} 
+                      className="text-blue-500" 
                     />
                   </div>
                 </div>
-                <h3 className="font-heading font-bold text-2xl mb-2 text-gray-900">
+                <h3 className="font-heading font-bold text-3xl mb-3 text-gray-900">
                   {plan.name}
                 </h3>
-                <p className="text-sm text-gray-600 mb-6 min-h-[40px]">
+                <p className="text-sm text-gray-500 mb-6 leading-relaxed">
                   {plan.description}
                 </p>
-                <div className="mb-6">
+                <div className="mb-8">
                   {plan.isFree ? (
-                    <span className="text-4xl font-heading font-bold text-green-600">
+                    <span className="text-4xl font-heading font-bold text-gray-900">
                       Бесплатно
                     </span>
                   ) : (
                     <>
-                      <span className="text-4xl font-heading font-bold text-gray-900">
+                      <span className="text-5xl font-heading font-bold text-gray-900">
                         ₽{billingPeriod === "month" ? plan.priceMonth : plan.priceYear}
                       </span>
-                      <span className="text-gray-500 text-sm ml-2">/мес</span>
+                      <span className="text-gray-400 text-base ml-2">/месяц</span>
                     </>
-                  )}
-                  {!plan.isFree && billingPeriod === "year" && (
-                    <div className="text-xs text-gray-500 mt-1">
-                      ₽{plan.priceYear} × 12 мес = ₽{(parseInt(plan.priceYear.replace(/\s/g, '')) * 12).toLocaleString('ru-RU')}
-                    </div>
                   )}
                 </div>
                 
                 <Button
-                  className={`w-full py-4 rounded-xl font-semibold mb-6 ${
+                  className={`w-full py-4 rounded-2xl font-semibold mb-8 text-sm uppercase tracking-wide ${
                     plan.popular
-                      ? "bg-blue-500 hover:bg-blue-600 text-white"
-                      : plan.isFree
-                      ? "bg-green-500 hover:bg-green-600 text-white"
+                      ? "bg-blue-100 hover:bg-blue-200 text-gray-800"
                       : "bg-blue-50 hover:bg-blue-100 text-gray-800"
                   }`}
                 >
-                  {plan.isFree ? "НАЧАТЬ БЕСПЛАТНО" : "ВЫБРАТЬ ТАРИФ"}
+                  Выбрать тариф
                 </Button>
                 
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {displayedFeatures.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <Icon
-                        name="Check"
-                        size={18}
-                        className="text-blue-500 mt-0.5 flex-shrink-0"
-                      />
-                      <span className="text-sm text-gray-600">{feature}</span>
+                      <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Icon
+                          name="Check"
+                          size={14}
+                          className="text-white"
+                        />
+                      </div>
+                      <span className="text-sm text-gray-600 leading-relaxed">{feature}</span>
                     </li>
                   ))}
                   {!isHovered && plan.features.length > 5 && (
                     <li className="flex items-center gap-2 pt-2">
                       <Icon name="ChevronDown" size={16} className="text-gray-400" />
-                      <span className="text-xs text-gray-500 italic">
+                      <span className="text-xs text-gray-400 italic">
                         Ещё {plan.features.length - 5} возможностей
                       </span>
                     </li>
