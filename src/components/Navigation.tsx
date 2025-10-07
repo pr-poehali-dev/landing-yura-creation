@@ -65,7 +65,7 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
                 Тарифы
               </button>
               <button
-                onClick={() => scrollToSection("features")}
+                onClick={() => scrollToSection("capabilities")}
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
               >
                 Возможности
@@ -118,7 +118,7 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
               Тарифы
             </button>
             <button
-              onClick={() => scrollToSection("features")}
+              onClick={() => scrollToSection("capabilities")}
               className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors rounded-lg"
             >
               Возможности
