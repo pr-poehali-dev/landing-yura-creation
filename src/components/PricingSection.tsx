@@ -51,7 +51,7 @@ const PricingSection = () => {
     },
     {
       name: "Стандартный",
-      priceMonth: "5 990",
+      priceMonth: "6 990",
       priceYear: "3 990",
       popular: true,
       description: "Для растущих команд",
@@ -73,7 +73,7 @@ const PricingSection = () => {
     },
     {
       name: "Проф",
-      priceMonth: "11 990",
+      priceMonth: "13 990",
       priceYear: "7 990",
       description: "Для больших команд",
       features: [
