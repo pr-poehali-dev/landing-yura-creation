@@ -1,5 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
-import Icon from "@/components/ui/icon";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const CapabilitiesSection = () => {
@@ -7,65 +5,67 @@ const CapabilitiesSection = () => {
   
   const capabilities = [
     {
-      icon: "Filter",
-      title: "CRM и продажи",
-      description: "Управляйте воронкой продаж, автоматизируйте бизнес-процессы, анализируйте эффективность менеджеров."
+      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/1.webp.webp?1709719053105799",
+      title: "CRM и управление продажами",
+      description: "Собирайте заявки со всех каналов: формы на сайте, онлайн-чаты, телефонные звонки и соцсети. Контакты, вся переписка и записи разговоров сохранятся в CRM."
     },
     {
-      icon: "LayoutGrid",
+      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/2.webp.webp?170971905352607",
+      title: "Автоматизация продаж",
+      description: "Десятки роботов для автоматизации продаж и маркетинга сэкономят ваше время и деньги. Настройте автоматические напоминания, рассылки и обработку заявок."
+    },
+    {
+      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/3.webp.webp?170971905369464",
       title: "Задачи и проекты",
-      description: "Гибкое управление задачами, контроль сроков, автоматизация бизнес-процессов, канбан-доски и диаграммы Ганта."
+      description: "Выбирайте удобный режим работы с проектами, назначайте ответственных, используйте чек-листы и шаблоны регулярных задач. Используйте списки, диаграмму Ганта, календарь."
     },
     {
-      icon: "MessageSquare",
-      title: "Коммуникации",
-      description: "Корпоративный чат, видеозвонки, рабочие группы, интеграция с почтой и соцсетями."
+      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/4.webp.webp?170971905314419",
+      title: "Коммуникации и совместная работа",
+      description: "Корпоративный чат, видеозвонки, рабочие группы. Живая лента для обмена новостями. Все коммуникации в едином пространстве для максимальной эффективности."
     },
     {
-      icon: "FileText",
-      title: "Документы",
-      description: "Облачное хранилище документов с совместным доступом, версионирование и история изменений."
+      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/5.webp.webp?170971905387046",
+      title: "Сайты и интернет-магазины",
+      description: "Создайте свой сайт, используя готовые блоки и шаблоны. Подключите онлайн-чат и собирайте заявки от клиентов! Сайт создается внутри CRM и не требует интеграции."
     },
     {
-      icon: "Phone",
-      title: "Телефония",
-      description: "Виртуальная АТС, звонки через интернет, запись разговоров и аналитика входящих/исходящих звонков."
-    },
-    {
-      icon: "PieChart",
-      title: "Аналитика",
-      description: "Мощные бизнес-аналитические отчеты, KPI сотрудников, анализ воронки продаж и эффективности рекламы."
+      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/6.webp.webp?170971905315524",
+      title: "Документы и диск",
+      description: "Облачное хранилище данных с возможностью совместной работы над документами. Интеграция с Google Drive, OneDrive и Dropbox. Работа офлайн и онлайн."
     }
   ];
 
   return (
-    <section ref={ref} id="capabilities" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section ref={ref} id="capabilities" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-[1460px] mx-auto">
-        <h2 className={`font-heading font-bold text-4xl md:text-5xl text-center mb-4 text-gray-800 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
-          Возможности Сервиса
+        <h2 className={`font-heading font-bold text-4xl md:text-5xl text-center mb-4 text-gray-900 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
+          Возможности Битрикс24
         </h2>
-        <p className={`text-center text-gray-600 mb-16 max-w-3xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
-          Все инструменты для эффективного управления бизнесом в одной системе
+        <p className={`text-center text-gray-600 text-lg mb-16 max-w-3xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
+          Единая платформа для организации работы всей компании. Вместо десятков сервисов — все инструменты в одном месте
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {capabilities.map((capability, index) => (
-            <Card 
+            <div 
               key={index} 
-              className={`border-0 bg-gray-50 hover:bg-blue-50 transition-all shadow-sm hover:shadow-md ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}
+              className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}
             >
-              <CardContent className="p-8">
-                <div className="w-14 h-14 bg-blue-500 rounded-2xl flex items-center justify-center mb-6">
-                  <Icon name={capability.icon} size={28} className="text-white" />
-                </div>
-                <h3 className="font-heading font-bold text-xl mb-3 text-gray-900">
-                  {capability.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {capability.description}
-                </p>
-              </CardContent>
-            </Card>
+              <div className="w-20 h-20 mb-6 flex items-center justify-center">
+                <img 
+                  src={capability.image} 
+                  alt={capability.title}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <h3 className="font-heading font-bold text-xl mb-4 text-gray-900">
+                {capability.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed">
+                {capability.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
