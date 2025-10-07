@@ -42,13 +42,12 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
         <nav className={`w-full max-w-[1460px] bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-full shadow-lg transition-all duration-300 ${scrolled ? 'md:scale-95' : 'md:scale-100'}`}>
           <div className="px-4 sm:px-6 lg:px-[28px]">
           <div className="flex items-center justify-between h-20">
-            <div className={`flex items-center gap-2 sm:gap-3 bg-blue-100 px-3 sm:px-6 py-2 sm:py-4 rounded-full -ml-2 sm:-ml-5 transition-transform duration-300 ${mobileMenuOpen ? '-translate-x-full lg:translate-x-0' : 'translate-x-0'}`}>
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Icon name="LayoutGrid" size={16} className="text-white sm:w-5 sm:h-5" />
-              </div>
-              <span className="font-heading font-bold text-sm sm:text-lg text-gray-900 whitespace-nowrap">
-                BITRIX24 Партнер
-              </span>
+            <div className={`flex items-center transition-transform duration-300 ${mobileMenuOpen ? '-translate-x-full lg:translate-x-0' : 'translate-x-0'}`}>
+              <img 
+                src="https://cdn.poehali.dev/files/c857b3d6-aebf-4ad0-afad-3b5aed8530cb.png" 
+                alt="ЦАВ - Центр автоматизаций и внедрений" 
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
             </div>
 
             <div className="hidden lg:flex items-center gap-8 mx-[10px]">

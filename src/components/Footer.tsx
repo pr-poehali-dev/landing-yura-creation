@@ -10,14 +10,15 @@ const Footer = ({ scrollToSection }: FooterProps) => {
       <div className="max-w-[1460px] mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <Icon name="LayoutGrid" size={20} className="text-white" />
-              </div>
-              <span className="font-heading font-bold">BITRIX24 Партнер</span>
+            <div className="mb-4">
+              <img 
+                src="https://cdn.poehali.dev/files/c857b3d6-aebf-4ad0-afad-3b5aed8530cb.png" 
+                alt="ЦАВ - Центр автоматизаций и внедрений" 
+                className="h-12 w-auto object-contain brightness-0 invert"
+              />
             </div>
             <p className="text-gray-400 text-sm">
-              Официальный партнер Битрикс24 в России
+              Центр автоматизаций и внедрений
             </p>
           </div>
           <div>
@@ -69,7 +70,7 @@ const Footer = ({ scrollToSection }: FooterProps) => {
           </div>
         </div>
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
-          © 2024 BITRIX24 Партнер. Все права защищены.
+          © 2024 ЦАВ - Центр автоматизаций и внедрений. Все права защищены.
         </div>
       </div>
     </footer>
