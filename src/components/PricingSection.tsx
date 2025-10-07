@@ -15,6 +15,7 @@ const PricingSection = () => {
       priceMonth: "0",
       priceYear: "0",
       description: "Для малых команд до 5 человек",
+      iconUrl: "https://cdn.poehali.dev/files/3b204b2a-b201-43f8-b5f1-8302de3b5707.png",
       features: [
         "До 5 пользователей",
         "5 ГБ в облаке",
@@ -34,6 +35,7 @@ const PricingSection = () => {
       priceMonth: "2 490",
       priceYear: "1 990",
       description: "Для небольших команд",
+      iconUrl: "https://cdn.poehali.dev/files/3b204b2a-b201-43f8-b5f1-8302de3b5707.png",
       features: [
         "До 5 пользователей",
         "24 ГБ в облаке",
@@ -55,6 +57,7 @@ const PricingSection = () => {
       priceYear: "5 990",
       popular: true,
       description: "Для растущих команд",
+      iconUrl: "https://cdn.poehali.dev/files/1b090d13-b2ec-475c-878e-365c87d5995b.png",
       features: [
         "До 50 пользователей",
         "100 ГБ в облаке",
@@ -76,6 +79,7 @@ const PricingSection = () => {
       priceMonth: "13 990",
       priceYear: "11 990",
       description: "Для больших команд",
+      iconUrl: "https://cdn.poehali.dev/files/2787cc67-c2c0-4231-879e-512d039dbb98.png",
       features: [
         "До 100 пользователей",
         "1 ТБ в облаке",
@@ -169,28 +173,8 @@ const PricingSection = () => {
                 )}
                 <CardContent className="p-8 pt-10">
                   <div className="flex items-center gap-3 mb-6">
-                    <div
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
-                        plan.popular
-                          ? "bg-blue-100"
-                          : plan.isFree
-                            ? "bg-blue-50"
-                            : "bg-gray-50"
-                      }`}
-                    >
-                      <Icon
-                        name={
-                          plan.isFree
-                            ? "User"
-                            : index === 1
-                              ? "User"
-                              : index === 2
-                                ? "Rocket"
-                                : "Building2"
-                        }
-                        size={32}
-                        className="text-blue-500"
-                      />
+                    <div className="w-14 h-14 flex items-center justify-center">
+                      <img src={plan.iconUrl} alt={plan.name} className="w-full h-full object-contain" />
                     </div>
                   </div>
                   <h3 className="font-heading font-bold text-3xl mb-3 text-gray-900">
