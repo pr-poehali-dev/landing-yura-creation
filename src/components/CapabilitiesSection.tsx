@@ -1,36 +1,43 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import Icon from "@/components/ui/icon";
 
 const CapabilitiesSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   
   const capabilities = [
     {
-      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/1.webp.webp?1709719053105799",
+      icon: "Users",
+      color: "bg-blue-500",
       title: "CRM и управление продажами",
       description: "Собирайте заявки со всех каналов: формы на сайте, онлайн-чаты, телефонные звонки и соцсети. Контакты, вся переписка и записи разговоров сохранятся в CRM."
     },
     {
-      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/2.webp.webp?170971905352607",
+      icon: "Zap",
+      color: "bg-purple-500",
       title: "Автоматизация продаж",
       description: "Десятки роботов для автоматизации продаж и маркетинга сэкономят ваше время и деньги. Настройте автоматические напоминания, рассылки и обработку заявок."
     },
     {
-      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/3.webp.webp?170971905369464",
+      icon: "ListChecks",
+      color: "bg-green-500",
       title: "Задачи и проекты",
       description: "Выбирайте удобный режим работы с проектами, назначайте ответственных, используйте чек-листы и шаблоны регулярных задач. Используйте списки, диаграмму Ганта, календарь."
     },
     {
-      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/4.webp.webp?170971905314419",
+      icon: "MessageCircle",
+      color: "bg-orange-500",
       title: "Коммуникации и совместная работа",
       description: "Корпоративный чат, видеозвонки, рабочие группы. Живая лента для обмена новостями. Все коммуникации в едином пространстве для максимальной эффективности."
     },
     {
-      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/5.webp.webp?170971905387046",
+      icon: "Globe",
+      color: "bg-cyan-500",
       title: "Сайты и интернет-магазины",
       description: "Создайте свой сайт, используя готовые блоки и шаблоны. Подключите онлайн-чат и собирайте заявки от клиентов! Сайт создается внутри CRM и не требует интеграции."
     },
     {
-      image: "https://www.bitrix24.ru/upload/optimizer/converted/bitrix/images/landing/business/images/b24__CRM_promo_icons/6.webp.webp?170971905315524",
+      icon: "FolderOpen",
+      color: "bg-pink-500",
       title: "Документы и диск",
       description: "Облачное хранилище данных с возможностью совместной работы над документами. Интеграция с Google Drive, OneDrive и Dropbox. Работа офлайн и онлайн."
     }
@@ -52,12 +59,8 @@ const CapabilitiesSection = () => {
               key={index} 
               className={`bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}
             >
-              <div className="w-20 h-20 mb-6 flex items-center justify-center">
-                <img 
-                  src={capability.image} 
-                  alt={capability.title}
-                  className="w-full h-full object-contain"
-                />
+              <div className={`w-16 h-16 ${capability.color} rounded-2xl flex items-center justify-center mb-6`}>
+                <Icon name={capability.icon} size={32} className="text-white" />
               </div>
               <h3 className="font-heading font-bold text-xl mb-4 text-gray-900">
                 {capability.title}
