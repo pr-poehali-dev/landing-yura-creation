@@ -101,8 +101,8 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
       </nav>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl animate-fade-in">
-          <div className="max-w-[1460px] mx-auto px-6 py-6 space-y-4">
+        <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl animate-fade-in overflow-hidden">
+          <div className="max-w-[1460px] mx-auto px-4 py-6 space-y-4">
             <button
               onClick={() => scrollToSection("about")}
               className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors rounded-lg"
@@ -133,7 +133,7 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
             >
               Контакты
             </button>
-            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-6 rounded-full font-semibold shadow-lg">
+            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 rounded-full font-semibold shadow-lg">
               Купить подписку
             </Button>
           </div>
