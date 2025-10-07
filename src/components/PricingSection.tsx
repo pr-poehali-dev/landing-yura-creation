@@ -173,9 +173,12 @@ const PricingSection = () => {
                 </p>
                 <div className="mb-8">
                   {plan.isFree ? (
-                    <span className="text-4xl font-heading font-bold text-gray-900">
-                      Бесплатно
-                    </span>
+                    <>
+                      <span className="text-5xl font-heading font-bold text-gray-900">
+                        ₽0
+                      </span>
+                      <span className="text-gray-400 text-base ml-2">/месяц</span>
+                    </>
                   ) : (
                     <>
                       <span className="text-5xl font-heading font-bold text-gray-900">
