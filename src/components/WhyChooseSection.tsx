@@ -7,7 +7,20 @@ const WhyChooseSection = () => {
   return (
     <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent relative z-10">
       <div className="max-w-[1460px] mx-auto">
-        <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] px-8 md:px-16 py-16 text-white">
+        <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] px-8 md:px-16 py-16 text-white relative overflow-hidden">
+          {/* Hexagonal grid pattern */}
+          <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="hexagons" width="100" height="86.6" patternUnits="userSpaceOnUse" patternTransform="scale(1)">
+                <polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" fill="none" stroke="white" strokeWidth="1.5"/>
+                <polygon points="0,43.3 43.3,18.3 43.3,68.3 0,93.3 -43.3,68.3 -43.3,18.3" fill="none" stroke="white" strokeWidth="1.5"/>
+                <polygon points="100,43.3 143.3,18.3 143.3,68.3 100,93.3 56.7,68.3 56.7,18.3" fill="none" stroke="white" strokeWidth="1.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hexagons)" />
+          </svg>
+          
+          <div className="relative z-10">
           <h2 className={`font-heading font-bold text-3xl md:text-4xl text-center mb-4 text-white ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
             Почему Выбирают Битрикс24?
           </h2>
@@ -16,7 +29,7 @@ const WhyChooseSection = () => {
             объединяющее CRM, задачи, документы, чаты и видеозвонки в единой системе.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 relative z-10">
             <div className={`text-center ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'}`}>
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
                 <Icon name="Users" size={40} className="text-white" />
@@ -52,6 +65,7 @@ const WhyChooseSection = () => {
                 Полный функционал в мобильных приложениях для iOS и Android. Работайте в дороге.
               </p>
             </div>
+          </div>
           </div>
         </div>
       </div>
