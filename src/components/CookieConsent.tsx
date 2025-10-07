@@ -67,9 +67,7 @@ const CookieConsent = () => {
                   с требованиями законодательства РФ (152-ФЗ). Продолжая использовать сайт, вы 
                   соглашаетесь с условиями{' '}
                   <a 
-                    href="https://disk.360.yandex.ru/i/0Ul7s4KQuf-TsA" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
+                    href="/privacy" 
                     className="text-primary hover:underline font-medium"
                   >
                     Политики конфиденциальности

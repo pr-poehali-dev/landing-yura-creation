@@ -129,9 +129,7 @@ const CTASection = () => {
               <label htmlFor="consent" className="text-sm text-white cursor-pointer">
                 Я даю согласие на обработку персональных данных в соответствии с{' '}
                 <a 
-                  href="https://disk.360.yandex.ru/i/0Ul7s4KQuf-TsA" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  href="/privacy"
                   className="underline hover:text-white/80"
                 >
                   Политикой конфиденциальности

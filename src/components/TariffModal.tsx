@@ -138,9 +138,7 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
               <label htmlFor="modal-consent" className="text-sm text-gray-700 cursor-pointer leading-relaxed">
                 Я даю согласие на обработку персональных данных в соответствии с{' '}
                 <a 
-                  href="https://disk.360.yandex.ru/i/0Ul7s4KQuf-TsA" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+                  href="/privacy"
                   className="text-blue-600 hover:underline"
                 >
                   Политикой конфиденциальности
