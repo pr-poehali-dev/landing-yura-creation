@@ -46,7 +46,7 @@ const Index = () => {
       <ReviewsSection />
       <FAQSection />
       <CTASection />
-      <Footer />
+      <Footer scrollToSection={scrollToSection} />
     </div>
   );
 };

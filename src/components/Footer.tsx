@@ -1,6 +1,10 @@
 import Icon from "@/components/ui/icon";
 
-const Footer = () => {
+interface FooterProps {
+  scrollToSection: (id: string) => void;
+}
+
+const Footer = ({ scrollToSection }: FooterProps) => {
   return (
     <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-[1460px] mx-auto">
@@ -19,17 +23,31 @@ const Footer = () => {
           <div>
             <h4 className="font-heading font-semibold mb-4">Продукт</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>О сервисе</li>
-              <li>Тарифы</li>
-              <li>Возможности</li>
+              <li>
+                <button onClick={() => scrollToSection("about")} className="hover:text-white transition-colors">
+                  О сервисе
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection("pricing")} className="hover:text-white transition-colors">
+                  Тарифы
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection("features")} className="hover:text-white transition-colors">
+                  Возможности
+                </button>
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="font-heading font-semibold mb-4">Поддержка</h4>
             <ul className="space-y-2 text-gray-400 text-sm">
-              <li>Документация</li>
-              <li>FAQ</li>
-              <li>Контакты</li>
+              <li>
+                <button onClick={() => scrollToSection("faq")} className="hover:text-white transition-colors">
+                  FAQ
+                </button>
+              </li>
             </ul>
           </div>
           <div>
@@ -37,11 +55,15 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-400 text-sm">
               <li className="flex items-center gap-2">
                 <Icon name="Mail" size={16} />
-                info@bitrix24.ru
+                <a href="mailto:ivanickiy@centerai.tech" className="hover:text-white transition-colors">
+                  ivanickiy@centerai.tech
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Icon name="Phone" size={16} />
-                +7 (495) 123-45-67
+                <a href="tel:+79582400010" className="hover:text-white transition-colors">
+                  +7 958 240-00-10
+                </a>
               </li>
             </ul>
           </div>
