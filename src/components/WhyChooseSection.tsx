@@ -28,6 +28,24 @@ const WhyChooseSection = () => {
             <rect width="100%" height="100%" fill="url(#hexagons)" />
           </svg>
           
+          {/* Animated sparkle corners */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-[15%] left-[8%] w-2 h-2 bg-white/40 rounded-full animate-sparkle" style={{ animationDelay: '0s' }}></div>
+            <div className="absolute top-[25%] left-[22%] w-1.5 h-1.5 bg-white/50 rounded-full animate-sparkle" style={{ animationDelay: '1.2s' }}></div>
+            <div className="absolute top-[45%] left-[12%] w-2.5 h-2.5 bg-white/35 rounded-full animate-sparkle" style={{ animationDelay: '2.4s' }}></div>
+            <div className="absolute top-[65%] left-[18%] w-1 h-1 bg-white/60 rounded-full animate-sparkle" style={{ animationDelay: '1.8s' }}></div>
+            
+            <div className="absolute top-[20%] right-[15%] w-2 h-2 bg-white/45 rounded-full animate-sparkle" style={{ animationDelay: '0.8s' }}></div>
+            <div className="absolute top-[38%] right-[8%] w-1.5 h-1.5 bg-white/40 rounded-full animate-sparkle" style={{ animationDelay: '2.1s' }}></div>
+            <div className="absolute top-[58%] right-[20%] w-2.5 h-2.5 bg-white/30 rounded-full animate-sparkle" style={{ animationDelay: '1.5s' }}></div>
+            <div className="absolute top-[75%] right-[12%] w-1.5 h-1.5 bg-white/55 rounded-full animate-sparkle" style={{ animationDelay: '2.8s' }}></div>
+            
+            <div className="absolute top-[10%] left-[45%] w-1 h-1 bg-white/50 rounded-full animate-sparkle" style={{ animationDelay: '1.6s' }}></div>
+            <div className="absolute top-[70%] left-[55%] w-2 h-2 bg-white/40 rounded-full animate-sparkle" style={{ animationDelay: '0.4s' }}></div>
+            <div className="absolute top-[32%] left-[62%] w-1.5 h-1.5 bg-white/45 rounded-full animate-sparkle" style={{ animationDelay: '2.6s' }}></div>
+            <div className="absolute top-[85%] left-[35%] w-2 h-2 bg-white/35 rounded-full animate-sparkle" style={{ animationDelay: '1.1s' }}></div>
+          </div>
+          
           <div className="relative z-10">
           <h2 className={`font-heading font-bold text-3xl md:text-4xl text-center mb-4 text-white ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
             Почему Выбирают Битрикс24?
