@@ -1,8 +1,9 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import Icon from "@/components/ui/icon";
+import { useState } from "react";
 
 const CapabilitiesSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
+  const [currentSlide, setCurrentSlide] = useState(0);
   
   const capabilities = [
     {
@@ -13,7 +14,7 @@ const CapabilitiesSection = () => {
     {
       iconUrl: "https://cdn.poehali.dev/files/8e50949b-fffa-4dfa-b288-c4b23ed8f172.png",
       title: "Задачи и проекты",
-      description: "Гибкое управление задачами, контроль сроков, автоматизация бизнес-процессов, канбан-доски и диаграммы Ганта."
+      description: "Корпоративный чат, видеозвонки, рабочие группы, интеграция с почтой и соцсетями."
     },
     {
       iconUrl: "https://cdn.poehali.dev/files/3d674af2-eaa9-4b9d-be8c-ce6f4783435d.png",
@@ -38,16 +39,62 @@ const CapabilitiesSection = () => {
   ];
 
   return (
-    <section ref={ref} id="capabilities" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section ref={ref} id="capabilities" className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-[1460px] mx-auto">
-        <h2 className={`font-heading font-bold text-3xl md:text-4xl text-center mb-3 text-gray-900 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
-          Возможности Сервиса
+        <h2 className={`font-heading font-bold text-2xl md:text-4xl text-left md:text-center mb-2 md:mb-3 text-gray-900 ${isVisible ? 'animate-scroll-in' : 'opacity-0'}`}>
+          Возможности сервиса
         </h2>
-        <p className={`text-center text-gray-500 text-base mb-16 max-w-3xl mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
+        <p className={`text-left md:text-center text-gray-500 text-sm md:text-base mb-8 md:mb-16 max-w-3xl md:mx-auto ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
           Все инструменты для эффективного управления бизнесом в одной системе
         </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Mobile Slider */}
+        <div className="md:hidden">
+          <div className="overflow-hidden">
+            <div 
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {capabilities.map((capability, index) => (
+                <div 
+                  key={index} 
+                  className="w-full flex-shrink-0 px-2"
+                >
+                  <div className="bg-gray-50/60 rounded-xl p-6">
+                    <div className="mb-4">
+                      <img src={capability.iconUrl} alt={capability.title} className="w-10 h-10" />
+                    </div>
+                    <h3 className="font-heading font-bold text-lg mb-2 text-gray-900">
+                      {capability.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {capability.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Dots Navigation */}
+          <div className="flex justify-center gap-2 mt-6">
+            {capabilities.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  currentSlide === index 
+                    ? 'bg-blue-600 w-6' 
+                    : 'bg-gray-300'
+                }`}
+                aria-label={`Слайд ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {capabilities.map((capability, index) => (
             <div 
               key={index} 
