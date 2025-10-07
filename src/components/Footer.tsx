@@ -54,6 +54,11 @@ const Footer = ({ scrollToSection }: FooterProps) => {
                   Политика конфиденциальности
                 </a>
               </li>
+              <li>
+                <a href="/terms" className="hover:text-white transition-colors">
+                  Пользовательское соглашение
+                </a>
+              </li>
             </ul>
           </div>
           <div>
