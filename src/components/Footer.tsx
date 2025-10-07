@@ -66,6 +66,13 @@ const Footer = ({ scrollToSection }: FooterProps) => {
                   +7 958 240-00-10
                 </a>
               </li>
+              <li className="mt-4 pt-4 border-t border-gray-800">
+                <div className="text-xs leading-relaxed">
+                  <p className="font-semibold text-gray-300 mb-1">ООО "Молотов траст"</p>
+                  <p>ИНН/КПП: 5906060110/590401001</p>
+                  <p>ОГРН: 1045901011860</p>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
