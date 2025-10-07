@@ -33,7 +33,8 @@ const CTASection = () => {
         backgroundImage: 'url(https://cdn.poehali.dev/files/42b639d9-499c-4f06-b119-ceca950b43b0.png)'
       }}
     >
-      <div className="absolute inset-0 bg-blue-600/20"></div>
+      <div className="absolute inset-0 bg-[#3D77FD]/70"></div>
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}></div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="max-w-2xl mx-auto">
