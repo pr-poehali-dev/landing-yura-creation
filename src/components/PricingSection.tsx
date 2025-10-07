@@ -72,7 +72,7 @@ const PricingSection = () => {
       ]
     },
     {
-      name: "Профессиональный",
+      name: "Проф",
       priceMonth: "11 990",
       priceYear: "7 990",
       description: "Для больших команд",
