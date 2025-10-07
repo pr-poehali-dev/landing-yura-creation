@@ -37,9 +37,10 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
   }, [lastScrollY]);
 
   return (
-    <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center pt-0 md:pt-[70px] px-0 md:px-4 transition-transform duration-300 ${navVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-      <nav className={`w-full max-w-[1460px] bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-full shadow-lg transition-all duration-300 ${scrolled ? 'md:scale-95' : 'md:scale-100'}`}>
-        <div className="px-4 sm:px-6 lg:px-[28px]">
+    <div className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${navVisible ? 'translate-y-0' : '-translate-y-full'}`}>
+      <div className="flex justify-center pt-0 md:pt-[70px] px-0 md:px-4">
+        <nav className={`w-full max-w-[1460px] bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-full shadow-lg transition-all duration-300 ${scrolled ? 'md:scale-95' : 'md:scale-100'}`}>
+          <div className="px-4 sm:px-6 lg:px-[28px]">
           <div className="flex items-center justify-between h-20">
             <div className={`flex items-center gap-2 sm:gap-3 bg-blue-100 px-3 sm:px-6 py-2 sm:py-4 rounded-full -ml-2 sm:-ml-5 transition-transform duration-300 ${mobileMenuOpen ? '-translate-x-full lg:translate-x-0' : 'translate-x-0'}`}>
               <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -98,11 +99,12 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
             </div>
           </div>
         </div>
-      </nav>
+        </nav>
+      </div>
 
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl animate-fade-in overflow-hidden">
-          <div className="max-w-[1460px] mx-auto px-4 py-6 space-y-4">
+        <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-200 shadow-xl animate-fade-in">
+          <div className="px-4 py-6 space-y-4">
             <button
               onClick={() => scrollToSection("about")}
               className="block w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors rounded-lg"
