@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const HeroSection = () => {
   return (
-    <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-visible">
+    <section className="relative pt-[32rem] pb-20 px-4 sm:px-6 lg:px-8 overflow-visible">
       <div 
         className="absolute inset-0 z-0"
         style={{
