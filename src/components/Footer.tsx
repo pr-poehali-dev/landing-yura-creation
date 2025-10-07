@@ -34,7 +34,7 @@ const Footer = ({ scrollToSection }: FooterProps) => {
                 </button>
               </li>
               <li>
-                <button onClick={() => scrollToSection("features")} className="hover:text-white transition-colors">
+                <button onClick={() => scrollToSection("capabilities")} className="hover:text-white transition-colors">
                   Возможности
                 </button>
               </li>
