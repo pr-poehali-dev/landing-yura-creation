@@ -6,25 +6,32 @@ import { useState } from "react";
 
 const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const [subscriptionType, setSubscriptionType] = useState<"new" | "renewal">("new");
-  const [marketSubscriptions, setMarketSubscriptions] = useState<{[key: number]: boolean}>({});
-  
-  const toggleMarketSubscription = (index: number) => {
-    setMarketSubscriptions(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
+  const [billingPeriod, setBillingPeriod] = useState<"month" | "year">("month");
   
   const plans = [
     {
-      name: "Базовый",
-      priceNew: "1 590",
-      priceRenewal: "1 390",
-      description: "Для одиночных пользователей Битрикс24",
+      name: "Бесплатный",
+      priceMonth: "0",
+      priceYear: "0",
+      description: "Для малых команд до 5 человек",
       features: [
         "До 5 пользователей",
-        "100 ГБ дискового пространства",
+        "5 ГБ в облаке",
+        "CRM",
+        "Задачи и проекты",
+        "Чаты и видеозвонки",
+        "Диск и документы"
+      ],
+      isFree: true
+    },
+    {
+      name: "Базовый",
+      priceMonth: "2 490",
+      priceYear: "1 990",
+      description: "Для небольших команд",
+      features: [
+        "До 5 пользователей",
+        "24 ГБ в облаке",
         "CRM + лидогенерация",
         "Задачи и проекты",
         "Контакт-центр",
@@ -32,46 +39,32 @@ const PricingSection = () => {
       ]
     },
     {
-      name: "Стандарт",
-      priceNew: "3 590",
-      priceRenewal: "2 990",
-      description: "Для малых команд с базовыми потребностями",
+      name: "Стандартный",
+      priceMonth: "5 990",
+      priceYear: "3 990",
+      popular: true,
+      description: "Для растущих команд",
       features: [
         "До 50 пользователей",
-        "1 ТБ дискового пространства",
-        "CRM + автоматизация + аналитика",
+        "100 ГБ в облаке",
+        "CRM + автоматизация",
         "Интернет-магазин",
         "Маркетинг и продажи",
-        "Совместная работа"
+        "HR и рекрутинг"
       ]
     },
     {
       name: "Профессиональный",
-      priceNew: "7 190",
-      priceRenewal: "5 990",
-      popular: true,
-      description: "Отлично подходит для развивающихся агентств и команд",
+      priceMonth: "11 990",
+      priceYear: "7 990",
+      description: "Для больших команд",
       features: [
         "До 100 пользователей",
-        "3 ТБ дискового пространства",
+        "1 ТБ в облаке",
         "Администрирование",
         "Бизнес-процессы",
         "Продажи через мессенджеры",
-        "HR и автоматизация"
-      ]
-    },
-    {
-      name: "Энтерпрайз",
-      priceNew: "11 990",
-      priceRenewal: "9 990",
-      description: "Индивидуальные решения для больших организаций",
-      features: [
-        "От 250 пользователей",
-        "10 ТБ дискового пространства",
-        "Все возможности Профессионального",
-        "Персональный менеджер",
-        "Расширенная безопасность",
-        "Индивидуальная настройка"
+        "Аналитика и BI"
       ]
     }
   ];
@@ -89,24 +82,25 @@ const PricingSection = () => {
         <div className={`flex justify-center mb-12 ${isVisible ? 'animate-scroll-in-delay-1' : 'opacity-0'}`}>
           <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
             <button
-              onClick={() => setSubscriptionType("new")}
+              onClick={() => setBillingPeriod("month")}
               className={`px-8 py-3 rounded-full font-semibold transition-all ${
-                subscriptionType === "new"
+                billingPeriod === "month"
                   ? "bg-blue-600 text-white shadow-md"
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              Новая подписка
+              На месяц
             </button>
             <button
-              onClick={() => setSubscriptionType("renewal")}
+              onClick={() => setBillingPeriod("year")}
               className={`px-8 py-3 rounded-full font-semibold transition-all ${
-                subscriptionType === "renewal"
+                billingPeriod === "year"
                   ? "bg-blue-600 text-white shadow-md"
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              Продление подписки
+              На год
+              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">-33%</span>
             </button>
           </div>
         </div>
@@ -129,9 +123,13 @@ const PricingSection = () => {
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
-                    plan.popular ? "bg-blue-500" : "bg-blue-100"
+                    plan.popular ? "bg-blue-500" : plan.isFree ? "bg-green-100" : "bg-blue-100"
                   }`}>
-                    <Icon name={index === 0 ? "User" : index === 1 ? "Users" : index === 2 ? "Rocket" : "Building2"} size={24} className={plan.popular ? "text-white" : "text-blue-600"} />
+                    <Icon 
+                      name={plan.isFree ? "Gift" : index === 1 ? "User" : index === 2 ? "Users" : "Rocket"} 
+                      size={24} 
+                      className={plan.popular ? "text-white" : plan.isFree ? "text-green-600" : "text-blue-600"} 
+                    />
                   </div>
                 </div>
                 <h3 className="font-heading font-bold text-2xl mb-2 text-gray-900">
@@ -141,45 +139,36 @@ const PricingSection = () => {
                   {plan.description}
                 </p>
                 <div className="mb-6">
-                  <span className="text-4xl font-heading font-bold text-gray-900">
-                    ₽{subscriptionType === "new" ? plan.priceNew : plan.priceRenewal}
-                  </span>
-                  <span className="text-gray-500 text-sm ml-2">/месяц</span>
+                  {plan.isFree ? (
+                    <span className="text-4xl font-heading font-bold text-green-600">
+                      Бесплатно
+                    </span>
+                  ) : (
+                    <>
+                      <span className="text-4xl font-heading font-bold text-gray-900">
+                        ₽{billingPeriod === "month" ? plan.priceMonth : plan.priceYear}
+                      </span>
+                      <span className="text-gray-500 text-sm ml-2">/мес</span>
+                    </>
+                  )}
+                  {!plan.isFree && billingPeriod === "year" && (
+                    <div className="text-xs text-gray-500 mt-1">
+                      ₽{plan.priceYear} × 12 мес = ₽{(parseInt(plan.priceYear.replace(/\s/g, '')) * 12).toLocaleString('ru-RU')}
+                    </div>
+                  )}
                 </div>
                 
                 <Button
                   className={`w-full py-4 rounded-xl font-semibold mb-6 ${
                     plan.popular
                       ? "bg-blue-500 hover:bg-blue-600 text-white"
+                      : plan.isFree
+                      ? "bg-green-500 hover:bg-green-600 text-white"
                       : "bg-blue-50 hover:bg-blue-100 text-gray-800"
                   }`}
                 >
-                  ВЫБРАТЬ ТАРИФ
+                  {plan.isFree ? "НАЧАТЬ БЕСПЛАТНО" : "ВЫБРАТЬ ТАРИФ"}
                 </Button>
-                
-                {subscriptionType === "renewal" && (
-                  <button
-                    onClick={() => toggleMarketSubscription(index)}
-                    className={`flex items-center gap-3 mb-6 p-3 rounded-lg transition-all w-full ${
-                      marketSubscriptions[index]
-                        ? "bg-blue-50"
-                        : "hover:bg-gray-50"
-                    }`}
-                  >
-                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
-                      marketSubscriptions[index]
-                        ? "bg-blue-500 border-blue-500"
-                        : "bg-white border-gray-300"
-                    }`}>
-                      {marketSubscriptions[index] && (
-                        <Icon name="Check" size={14} className="text-white" />
-                      )}
-                    </div>
-                    <span className="text-sm font-medium text-gray-700">
-                      Подписка на Маркет
-                    </span>
-                  </button>
-                )}
                 
                 <ul className="space-y-3">
                   {plan.features.map((feature, i) => (
