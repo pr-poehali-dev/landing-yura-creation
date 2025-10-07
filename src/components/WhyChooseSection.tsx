@@ -8,13 +8,21 @@ const WhyChooseSection = () => {
     <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent relative z-10">
       <div className="max-w-[1460px] mx-auto">
         <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] px-8 md:px-16 py-16 text-white relative overflow-hidden">
-          {/* Hexagonal grid pattern */}
-          <svg className="absolute inset-0 w-full h-full opacity-10" xmlns="http://www.w3.org/2000/svg">
+          {/* Hexagonal grid pattern - decorative honeycomb */}
+          <svg className="absolute inset-0 w-full h-full opacity-[0.08]" xmlns="http://www.w3.org/2000/svg">
             <defs>
-              <pattern id="hexagons" width="100" height="86.6" patternUnits="userSpaceOnUse" patternTransform="scale(1)">
-                <polygon points="50,0 93.3,25 93.3,75 50,100 6.7,75 6.7,25" fill="none" stroke="white" strokeWidth="1.5"/>
-                <polygon points="0,43.3 43.3,18.3 43.3,68.3 0,93.3 -43.3,68.3 -43.3,18.3" fill="none" stroke="white" strokeWidth="1.5"/>
-                <polygon points="100,43.3 143.3,18.3 143.3,68.3 100,93.3 56.7,68.3 56.7,18.3" fill="none" stroke="white" strokeWidth="1.5"/>
+              <pattern id="hexagons" width="120" height="104" patternUnits="userSpaceOnUse">
+                {/* Main hexagons with varied opacity */}
+                <polygon points="60,0 105,26 105,78 60,104 15,78 15,26" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" strokeWidth="1"/>
+                <polygon points="0,52 45,26 45,78 0,104 -45,78 -45,26" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
+                <polygon points="120,52 165,26 165,78 120,104 75,78 75,26" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
+                {/* Small accent hexagons */}
+                <polygon points="30,78 45,70 45,86 30,94 15,86 15,70" fill="rgba(255,255,255,0.25)" stroke="none"/>
+                <polygon points="90,26 105,18 105,34 90,42 75,34 75,18" fill="rgba(255,255,255,0.2)" stroke="none"/>
+                {/* Decorative circles */}
+                <circle cx="60" cy="52" r="3" fill="rgba(255,255,255,0.3)"/>
+                <circle cx="105" cy="26" r="2" fill="rgba(255,255,255,0.2)"/>
+                <circle cx="15" cy="78" r="2.5" fill="rgba(255,255,255,0.25)"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#hexagons)" />
