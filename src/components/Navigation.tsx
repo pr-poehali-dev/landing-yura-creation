@@ -42,11 +42,16 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
         <nav className={`w-full max-w-[1460px] bg-white/80 backdrop-blur-md border border-gray-200 md:rounded-full shadow-lg transition-all duration-300 ${scrolled ? 'md:scale-95' : 'md:scale-100'}`}>
           <div className="px-4 sm:px-6 lg:px-[28px]">
           <div className="flex items-center justify-between h-20">
-            <div className={`flex items-center transition-transform duration-300 ${mobileMenuOpen ? '-translate-x-full lg:translate-x-0' : 'translate-x-0'}`}>
+            <div className={`flex items-center gap-3 transition-transform duration-300 ${mobileMenuOpen ? '-translate-x-full lg:translate-x-0' : 'translate-x-0'}`}>
+              <img 
+                src="https://cdn.poehali.dev/files/6ccab083-e2ef-4108-be78-8dfa31532525.png" 
+                alt="ЦАВ" 
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
               <img 
                 src="https://cdn.poehali.dev/files/c857b3d6-aebf-4ad0-afad-3b5aed8530cb.png" 
-                alt="ЦАВ - Центр автоматизаций и внедрений" 
-                className="h-10 sm:h-12 w-auto object-contain"
+                alt="Центр автоматизаций и внедрений" 
+                className="h-8 sm:h-10 w-auto object-contain"
               />
             </div>
 
