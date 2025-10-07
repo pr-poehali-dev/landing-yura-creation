@@ -42,8 +42,11 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
         </p>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 mb-12 md:mb-20 animate-fade-in">
-          <Button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-4 md:py-6 rounded-full font-semibold text-sm md:text-lg shadow-xl hover:shadow-2xl transition-all uppercase">
-            ПОПРОБОВАТЬ БЕСПЛАТНО
+          <Button 
+            onClick={() => scrollToSection("pricing")}
+            className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-4 md:py-6 rounded-full font-semibold text-sm md:text-lg shadow-xl hover:shadow-2xl transition-all uppercase"
+          >
+            ВЫБРАТЬ ТАРИФ
             <Icon name="ArrowRight" size={18} className="ml-2 md:w-5 md:h-5" />
           </Button>
           <Button
