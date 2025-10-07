@@ -8,6 +8,7 @@ const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [billingPeriod, setBillingPeriod] = useState<"month" | "year">("month");
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [expandedMobileCard, setExpandedMobileCard] = useState<number | null>(null);
 
   const plans = [
     {
@@ -149,9 +150,12 @@ const PricingSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto items-start">
           {plans.map((plan, index) => {
             const isHovered = hoveredCard === index;
-            const displayedFeatures = isHovered
+            const isMobileExpanded = expandedMobileCard === index;
+            const displayedFeaturesDesktop = isHovered
               ? plan.features
               : plan.features.slice(0, 5);
+            const displayedFeaturesMobile = plan.features.slice(0, 5);
+            const remainingFeaturesMobile = plan.features.slice(5);
 
             return (
               <Card
@@ -162,8 +166,8 @@ const PricingSection = () => {
                   plan.popular
                     ? "border-2 border-blue-300 bg-gradient-to-b from-blue-50 to-white shadow-xl"
                     : "border border-gray-200 bg-white shadow-md"
-                } hover:shadow-2xl transition-all duration-300 rounded-3xl ${
-                  isHovered ? "scale-110 z-10" : "scale-100"
+                } md:hover:shadow-2xl transition-all duration-300 rounded-3xl ${
+                  isHovered ? "md:scale-110 md:z-10" : "scale-100"
                 }`}
               >
                 {plan.popular && (
@@ -218,8 +222,9 @@ const PricingSection = () => {
                     Выбрать тариф
                   </Button>
 
-                  <ul className="space-y-4">
-                    {displayedFeatures.map((feature, i) => (
+                  {/* Desktop: показываем с hover-эффектом */}
+                  <ul className="space-y-4 hidden md:block">
+                    {displayedFeaturesDesktop.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <Icon name="Check" size={14} className="text-white" />
@@ -242,6 +247,52 @@ const PricingSection = () => {
                       </li>
                     )}
                   </ul>
+
+                  {/* Mobile: первые 5 + слайдер остальных */}
+                  <div className="md:hidden">
+                    <ul className="space-y-4 mb-4">
+                      {displayedFeaturesMobile.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3">
+                          <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Icon name="Check" size={14} className="text-white" />
+                          </div>
+                          <span className="text-sm text-gray-600 leading-relaxed">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                    
+                    {remainingFeaturesMobile.length > 0 && (
+                      <div>
+                        <button
+                          onClick={() => setExpandedMobileCard(isMobileExpanded ? null : index)}
+                          className="flex items-center gap-2 text-blue-600 text-sm font-semibold mb-3"
+                        >
+                          <Icon 
+                            name={isMobileExpanded ? "ChevronUp" : "ChevronDown"} 
+                            size={16} 
+                          />
+                          {isMobileExpanded ? 'Скрыть' : `Ещё ${remainingFeaturesMobile.length} возможностей`}
+                        </button>
+                        
+                        {isMobileExpanded && (
+                          <ul className="space-y-4 animate-fade-in">
+                            {remainingFeaturesMobile.map((feature, i) => (
+                              <li key={i} className="flex items-start gap-3">
+                                <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                  <Icon name="Check" size={14} className="text-white" />
+                                </div>
+                                <span className="text-sm text-gray-600 leading-relaxed">
+                                  {feature}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             );
