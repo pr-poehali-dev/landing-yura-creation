@@ -16,9 +16,35 @@ const CTASection = () => {
     consent: false
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/95830b61-9b82-45e6-b96c-bcb5ef3bbf7b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: "", company: "", email: "", phone: "", message: "", consent: false });
+        setTimeout(() => setSubmitStatus('idle'), 3000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string | boolean) => {
@@ -97,12 +123,25 @@ const CTASection = () => {
               </label>
             </div>
 
+            {submitStatus === 'success' && (
+              <div className="bg-green-500 text-white p-4 rounded-2xl text-center font-semibold">
+                ✓ Сообщение успешно отправлено!
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-500 text-white p-4 rounded-2xl text-center font-semibold">
+                ✗ Ошибка отправки. Попробуйте позже.
+              </div>
+            )}
+
             <div className="pt-4 text-center">
               <Button
                 type="submit"
-                className="w-full sm:w-auto bg-white text-gray-900 hover:bg-gray-100 px-6 sm:px-10 py-4 sm:py-6 rounded-full font-semibold text-sm sm:text-base shadow-xl"
+                disabled={isSubmitting || !formData.consent}
+                className="w-full sm:w-auto bg-white text-gray-900 hover:bg-gray-100 px-6 sm:px-10 py-4 sm:py-6 rounded-full font-semibold text-sm sm:text-base shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                ОТПРАВИТЬ СООБЩЕНИЕ
+                {isSubmitting ? 'ОТПРАВКА...' : 'ОТПРАВИТЬ СООБЩЕНИЕ'}
               </Button>
             </div>
           </form>

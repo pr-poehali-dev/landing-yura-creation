@@ -3,12 +3,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useState } from "react";
+import TariffModal from "@/components/TariffModal";
 
 const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [billingPeriod, setBillingPeriod] = useState<"month" | "year">("month");
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const [expandedMobileCard, setExpandedMobileCard] = useState<number | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedTariff, setSelectedTariff] = useState("");
 
   const plans = [
     {
@@ -216,6 +219,10 @@ const PricingSection = () => {
                   </div>
 
                   <Button
+                    onClick={() => {
+                      setSelectedTariff(plan.name);
+                      setModalOpen(true);
+                    }}
                     className={`w-full py-4 rounded-2xl font-semibold mb-8 text-sm uppercase tracking-wide ${
                       plan.popular
                         ? "bg-blue-100 hover:bg-blue-200 text-gray-800"
@@ -302,6 +309,12 @@ const PricingSection = () => {
           })}
         </div>
       </div>
+
+      <TariffModal 
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        tariffName={selectedTariff}
+      />
     </section>
   );
 };

@@ -1,0 +1,39 @@
+{
+  "tests": [
+    {
+      "name": "Test tariff inquiry",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Иван Иванов",
+        "phone": "+7 900 123-45-67",
+        "email": "ivan@example.com",
+        "company": "ООО Тестовая",
+        "message": "Хочу подключить тариф",
+        "tariff": "Стандартный"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test contact form",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Петр Петров",
+        "phone": "+7 900 999-99-99",
+        "email": "petr@example.com",
+        "company": "ИП Петров",
+        "message": "Есть вопросы по интеграции"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
