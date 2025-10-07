@@ -76,7 +76,8 @@ const PricingSection = () => {
       ],
     },
     {
-      name: "Проф",
+      name: "ПРО",
+      nameSmall: "фессиональный",
       priceMonth: "13 990",
       priceYear: "11 990",
       description: "Для больших команд",
@@ -184,6 +185,7 @@ const PricingSection = () => {
                   </div>
                   <h3 className="font-heading font-bold text-3xl mb-3 text-gray-900">
                     {plan.name}
+                    {'nameSmall' in plan && <span className="text-base font-normal">{plan.nameSmall}</span>}
                   </h3>
                   <p className="text-sm text-gray-500 mb-6 leading-relaxed">
                     {plan.description}
