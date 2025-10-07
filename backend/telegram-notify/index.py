@@ -53,24 +53,38 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     # Parse request body
     body_data = json.loads(event.get('body', '{}'))
     
-    name = body_data.get('name', '')
-    phone = body_data.get('phone', '')
-    email = body_data.get('email', '')
-    company = body_data.get('company', '')
-    message = body_data.get('message', '')
-    tariff = body_data.get('tariff', '')
+    # Check if this is a cookie consent notification
+    request_type = body_data.get('type', '')
     
-    # Build Telegram message
-    if tariff:
-        text = f"""🎯 <b>Новая заявка на тариф: {tariff}</b>
+    if request_type == 'cookie_consent':
+        user_id = body_data.get('userId', 'unknown')
+        timestamp = body_data.get('timestamp', '')
+        user_agent = body_data.get('userAgent', '')
+        
+        text = f"""🍪 <b>Новое согласие на обработку данных</b>
+
+🆔 <b>ID пользователя:</b> <code>{user_id}</code>
+🕐 <b>Время:</b> {timestamp}
+🌐 <b>User Agent:</b> {user_agent}"""
+    else:
+        name = body_data.get('name', '')
+        phone = body_data.get('phone', '')
+        email = body_data.get('email', '')
+        company = body_data.get('company', '')
+        message = body_data.get('message', '')
+        tariff = body_data.get('tariff', '')
+        
+        # Build Telegram message
+        if tariff:
+            text = f"""🎯 <b>Новая заявка на тариф: {tariff}</b>
 
 👤 <b>ФИО:</b> {name}
 📞 <b>Телефон:</b> {phone}
 📧 <b>Email:</b> {email}
 🏢 <b>Организация:</b> {company}
 💬 <b>Комментарий:</b> {message if message else 'Не указан'}"""
-    else:
-        text = f"""📩 <b>Новое обращение с сайта</b>
+        else:
+            text = f"""📩 <b>Новое обращение с сайта</b>
 
 👤 <b>ФИО:</b> {name}
 📞 <b>Телефон:</b> {phone}

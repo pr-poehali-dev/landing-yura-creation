@@ -12,9 +12,37 @@ const CookieConsent = () => {
     }
   }, []);
 
-  const handleAccept = () => {
+  const handleAccept = async () => {
+    const userId = getUserId();
+    
+    try {
+      await fetch('https://functions.poehali.dev/95830b61-9b82-45e6-b96c-bcb5ef3bbf7b', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'cookie_consent',
+          userId: userId,
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent
+        })
+      });
+    } catch (error) {
+      console.error('Failed to send consent notification:', error);
+    }
+    
     localStorage.setItem('cookieConsent', 'accepted');
     setIsVisible(false);
+  };
+
+  const getUserId = (): string => {
+    let userId = localStorage.getItem('userId');
+    if (!userId) {
+      userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      localStorage.setItem('userId', userId);
+    }
+    return userId;
   };
 
   const handleDecline = () => {
