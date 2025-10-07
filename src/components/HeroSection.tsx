@@ -3,7 +3,7 @@ import Icon from "@/components/ui/icon";
 
 const HeroSection = () => {
   return (
-    <section className="relative pt-[32rem] pb-20 px-4 sm:px-6 lg:px-8 overflow-visible">
+    <section className="relative pt-20 md:pt-[32rem] pb-12 md:pb-20 px-4 sm:px-6 lg:px-8 overflow-visible min-h-screen md:min-h-0 flex items-center">
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -11,57 +11,56 @@ const HeroSection = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          height: 'calc(100% + 200px)'
+          height: '100%'
         }}
       />
-      <div className="max-w-[1460px] mx-auto relative z-10">
-        <div className="text-center mb-8 animate-fade-in">
-          <div className="inline-flex items-center gap-2 text-blue-600 font-semibold mb-6">
+      <div className="max-w-[1460px] mx-auto relative z-10 w-full">
+        <div className="text-center mb-4 md:mb-8 animate-fade-in">
+          <div className="inline-flex items-center gap-2 text-blue-600 font-semibold text-xs md:text-base mb-3 md:mb-6">
             <span>ЛУЧШАЯ CRM В РОССИИ</span>
-            <Icon name="Sparkles" size={20} />
+            <Icon name="Sparkles" size={16} className="md:w-5 md:h-5" />
           </div>
         </div>
 
-        <h1 className="font-heading font-bold text-5xl md:text-7xl text-center mb-6 animate-scale-in">
-          Лучшая <span className="text-blue-600 relative inline-block px-4">
+        <h1 className="font-heading font-bold text-3xl md:text-7xl text-center mb-4 md:mb-6 animate-scale-in leading-tight">
+          Лучшая <span className="text-blue-600 relative inline-block px-2 md:px-4">
             <img 
               src="https://cdn.poehali.dev/files/8dbe9fa5-1ce6-436a-b136-80125156b80c.png" 
               alt="" 
-              className="absolute -bottom-4 left-1/2 w-[120%] h-auto -z-10 animate-float"
+              className="absolute -bottom-2 md:-bottom-4 left-1/2 w-[120%] h-auto -z-10 animate-float"
             />
             <span className="relative z-10">CRM</span>
-          </span> Система Для<br />Вашего Бизнеса
+          </span><br className="md:hidden" /> Система Для<br />Вашего Бизнеса
         </h1>
 
-        <p className="text-center text-gray-600 text-lg md:text-xl max-w-3xl mx-auto mb-12 animate-fade-in">
-          Битрикс24 помогает автоматизировать бизнес-процессы, увеличивать
-          продажи и улучшать взаимодействие с клиентами
+        <p className="text-center text-gray-600 text-sm md:text-xl max-w-xs md:max-w-3xl mx-auto mb-8 md:mb-12 animate-fade-in leading-relaxed">
+          Битрикс24 помогает автоматизировать бизнес-процессы, увеличивать продажи и улучшать взаимодействие с клиентами
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-20 animate-fade-in">
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-6 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-all">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4 mb-12 md:mb-20 animate-fade-in">
+          <Button className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-4 md:py-6 rounded-full font-semibold text-sm md:text-lg shadow-xl hover:shadow-2xl transition-all uppercase">
             ПОПРОБОВАТЬ БЕСПЛАТНО
-            <Icon name="ArrowRight" size={20} className="ml-2" />
+            <Icon name="ArrowRight" size={18} className="ml-2 md:w-5 md:h-5" />
           </Button>
           <Button
             variant="outline"
-            className="border-2 border-gray-900 text-gray-900 px-8 py-6 rounded-full font-semibold text-lg hover:bg-gray-900 hover:text-white transition-all"
+            className="w-full md:w-auto border-2 border-gray-900 text-gray-900 px-6 md:px-8 py-4 md:py-6 rounded-full font-semibold text-sm md:text-lg hover:bg-gray-900 hover:text-white transition-all uppercase"
           >
             ПОДРОБНЕЕ
           </Button>
         </div>
 
-        <div className="text-center mb-8">
-          <p className="text-blue-600 font-semibold text-sm mb-6">
-            АВТОРИТЕТНЫЕ КОМПАНИИ ДОВЕРЯЮТ БИТРИКС24:
+        <div className="text-center mb-6 md:mb-8">
+          <p className="text-blue-600 font-semibold text-xs md:text-sm mb-4 md:mb-6">
+            АВТОРИТЕТНЫЕ КОМПАНИИ<br className="md:hidden" /> ДОВЕРЯЮТ БИТРИКС24:
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-12 opacity-60">
-          <div className="text-4xl font-bold text-gray-400">Forbes</div>
-          <div className="text-4xl font-bold text-gray-400">PC</div>
-          <div className="text-4xl font-bold text-gray-400">ЛАЙФХАКЕР</div>
-          <div className="text-4xl font-bold text-gray-400">ITworld</div>
+        <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-6 md:gap-12 opacity-60">
+          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">Forbes</div>
+          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">PC</div>
+          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">ЛАЙФХАКЕР</div>
+          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">ITworld</div>
         </div>
       </div>
     </section>
