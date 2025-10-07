@@ -64,11 +64,24 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-6 md:gap-12 opacity-60">
-          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">Forbes</div>
-          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">PC</div>
-          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">ЛАЙФХАКЕР</div>
-          <div className="text-xl md:text-4xl font-bold text-gray-400 text-center">ITworld</div>
+        <div className="hidden md:flex md:flex-wrap items-center justify-center gap-12 opacity-60">
+          <img src="https://cdn.poehali.dev/files/3e7b1363-d0d1-4f12-9644-94da7a9ea465.png" alt="Forbes" className="h-8 object-contain grayscale" />
+          <img src="https://cdn.poehali.dev/files/922771ca-9697-401c-91c1-ed264b71b559.png" alt="PC" className="h-8 object-contain grayscale" />
+          <img src="https://cdn.poehali.dev/files/ca20920e-4234-4e3d-ac24-344f6b285b1d.png" alt="Лайфхакер" className="h-8 object-contain grayscale" />
+          <img src="https://cdn.poehali.dev/files/d531be2e-5a7f-4cc2-869a-7b698164a5bd.png" alt="ITworld" className="h-8 object-contain grayscale" />
+        </div>
+
+        <div className="md:hidden relative overflow-hidden">
+          <div className="flex gap-6 animate-scroll">
+            <img src="https://cdn.poehali.dev/files/3e7b1363-d0d1-4f12-9644-94da7a9ea465.png" alt="Forbes" className="h-6 object-contain grayscale opacity-60" />
+            <img src="https://cdn.poehali.dev/files/922771ca-9697-401c-91c1-ed264b71b559.png" alt="PC" className="h-6 object-contain grayscale opacity-60" />
+            <img src="https://cdn.poehali.dev/files/ca20920e-4234-4e3d-ac24-344f6b285b1d.png" alt="Лайфхакер" className="h-6 object-contain grayscale opacity-60" />
+            <img src="https://cdn.poehali.dev/files/d531be2e-5a7f-4cc2-869a-7b698164a5bd.png" alt="ITworld" className="h-6 object-contain grayscale opacity-60" />
+            <img src="https://cdn.poehali.dev/files/3e7b1363-d0d1-4f12-9644-94da7a9ea465.png" alt="Forbes" className="h-6 object-contain grayscale opacity-60" />
+            <img src="https://cdn.poehali.dev/files/922771ca-9697-401c-91c1-ed264b71b559.png" alt="PC" className="h-6 object-contain grayscale opacity-60" />
+            <img src="https://cdn.poehali.dev/files/ca20920e-4234-4e3d-ac24-344f6b285b1d.png" alt="Лайфхакер" className="h-6 object-contain grayscale opacity-60" />
+            <img src="https://cdn.poehali.dev/files/d531be2e-5a7f-4cc2-869a-7b698164a5bd.png" alt="ITworld" className="h-6 object-contain grayscale opacity-60" />
+          </div>
         </div>
       </div>
     </section>
