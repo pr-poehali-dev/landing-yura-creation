@@ -7,6 +7,7 @@ import { useState } from "react";
 const PricingSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   const [billingPeriod, setBillingPeriod] = useState<"month" | "year">("month");
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   
   const plans = [
     {
@@ -129,22 +130,30 @@ const PricingSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto">
-          {plans.map((plan, index) => (
-            <Card
-              key={index}
-              className={`relative overflow-hidden ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
-                plan.popular
-                  ? "border-2 border-blue-400 bg-gradient-to-br from-blue-50 to-white shadow-2xl scale-105"
-                  : "border border-gray-200 bg-white shadow-lg"
-              } hover:shadow-xl transition-all rounded-3xl`}
-            >
-              {plan.popular && (
-                <div className="absolute top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-full text-xs font-semibold">
-                  Рекомендуем
-                </div>
-              )}
-              <CardContent className="p-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto items-start">
+          {plans.map((plan, index) => {
+            const isHovered = hoveredCard === index;
+            const displayedFeatures = isHovered ? plan.features : plan.features.slice(0, 5);
+            
+            return (
+              <Card
+                key={index}
+                onMouseEnter={() => setHoveredCard(index)}
+                onMouseLeave={() => setHoveredCard(null)}
+                className={`relative overflow-hidden ${isVisible ? 'animate-scroll-in-delay-2' : 'opacity-0'} ${
+                  plan.popular
+                    ? "border-2 border-blue-400 bg-gradient-to-br from-blue-50 to-white shadow-2xl"
+                    : "border border-gray-200 bg-white shadow-lg"
+                } hover:shadow-2xl transition-all duration-300 rounded-3xl ${
+                  isHovered ? 'scale-110 z-10' : 'scale-100'
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute top-6 right-6 bg-blue-500 text-white px-4 py-2 rounded-full text-xs font-semibold">
+                    Рекомендуем
+                  </div>
+                )}
+                <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${
                     plan.popular ? "bg-blue-500" : plan.isFree ? "bg-green-100" : "bg-blue-100"
@@ -195,7 +204,7 @@ const PricingSection = () => {
                 </Button>
                 
                 <ul className="space-y-3">
-                  {plan.features.map((feature, i) => (
+                  {displayedFeatures.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <Icon
                         name="Check"
@@ -205,10 +214,19 @@ const PricingSection = () => {
                       <span className="text-sm text-gray-600">{feature}</span>
                     </li>
                   ))}
+                  {!isHovered && plan.features.length > 5 && (
+                    <li className="flex items-center gap-2 pt-2">
+                      <Icon name="ChevronDown" size={16} className="text-gray-400" />
+                      <span className="text-xs text-gray-500 italic">
+                        Ещё {plan.features.length - 5} возможностей
+                      </span>
+                    </li>
+                  )}
                 </ul>
               </CardContent>
             </Card>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
