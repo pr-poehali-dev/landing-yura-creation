@@ -1,7 +1,13 @@
+User-agent: *
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
+Allow: /
+
+User-agent: YandexBot
 Allow: /
 
 User-agent: Twitterbot
@@ -10,5 +16,6 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
-Allow: /
+Sitemap: https://aasbx24.ru/sitemap.xml
+
+Host: https://aasbx24.ru
