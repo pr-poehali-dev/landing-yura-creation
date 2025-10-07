@@ -100,7 +100,7 @@ const CTASection = () => {
             <div className="pt-4 text-center">
               <Button
                 type="submit"
-                className="bg-white text-gray-900 hover:bg-gray-100 px-10 py-6 rounded-full font-semibold text-base shadow-xl"
+                className="w-full sm:w-auto bg-white text-gray-900 hover:bg-gray-100 px-6 sm:px-10 py-4 sm:py-6 rounded-full font-semibold text-sm sm:text-base shadow-xl"
               >
                 ОТПРАВИТЬ СООБЩЕНИЕ
               </Button>

@@ -123,7 +123,7 @@ const PricingSection = () => {
           <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
             <button
               onClick={() => setBillingPeriod("month")}
-              className={`px-8 py-3 rounded-full font-semibold transition-all ${
+              className={`px-4 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all ${
                 billingPeriod === "month"
                   ? "bg-blue-600 text-white shadow-md"
                   : "text-gray-700 hover:text-gray-900"
@@ -133,14 +133,15 @@ const PricingSection = () => {
             </button>
             <button
               onClick={() => setBillingPeriod("year")}
-              className={`px-8 py-3 rounded-full font-semibold transition-all ${
+              className={`px-4 sm:px-8 py-2 sm:py-3 rounded-full font-semibold text-sm sm:text-base transition-all ${
                 billingPeriod === "year"
                   ? "bg-blue-600 text-white shadow-md"
                   : "text-gray-700 hover:text-gray-900"
               }`}
             >
-              На год
-              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
+              <span className="hidden sm:inline">На год</span>
+              <span className="sm:hidden">Год</span>
+              <span className="ml-1 sm:ml-2 text-xs bg-green-500 text-white px-1.5 sm:px-2 py-0.5 rounded-full">
                 -20%
               </span>
             </button>
