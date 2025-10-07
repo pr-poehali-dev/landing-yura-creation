@@ -38,7 +38,7 @@ const Index = () => {
         setMobileMenuOpen={setMobileMenuOpen}
         scrollToSection={scrollToSection}
       />
-      <HeroSection />
+      <HeroSection scrollToSection={scrollToSection} />
       <WhyChooseSection />
       <AboutSection />
       <CapabilitiesSection />

@@ -5,7 +5,7 @@ const WhyChooseSection = () => {
   const { ref, isVisible } = useScrollAnimation(0.1);
   
   return (
-    <section ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent relative z-10">
+    <section ref={ref} id="why-choose" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent relative z-10">
       <div className="max-w-[1460px] mx-auto">
         <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-[40px] px-8 md:px-16 py-16 text-white relative overflow-hidden">
           {/* Hexagonal grid pattern - decorative honeycomb */}

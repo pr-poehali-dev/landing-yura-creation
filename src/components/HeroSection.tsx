@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  scrollToSection: (id: string) => void;
+}
+
+const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
   return (
     <section className="relative pt-20 md:pt-[32rem] pb-12 md:pb-20 px-4 sm:px-6 lg:px-8 overflow-visible min-h-screen md:min-h-0 flex items-center">
       <div 
@@ -44,6 +48,7 @@ const HeroSection = () => {
           </Button>
           <Button
             variant="outline"
+            onClick={() => scrollToSection("why-choose")}
             className="w-full md:w-auto border-2 border-gray-900 text-gray-900 px-6 md:px-8 py-4 md:py-6 rounded-full font-semibold text-sm md:text-lg hover:bg-gray-900 hover:text-white transition-all uppercase"
           >
             ПОДРОБНЕЕ
