@@ -1,0 +1,48 @@
+{
+  "tests": [
+    {
+      "name": "Test Bitrix24 webhook with full data",
+      "method": "POST",
+      "path": "/",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "name": "Иван Иванов",
+        "phone": "+79991234567",
+        "email": "test@example.com",
+        "company": "ООО Тест",
+        "message": "Интересует внедрение",
+        "tariff": "Базовый"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test Bitrix24 webhook with minimal data",
+      "method": "POST",
+      "path": "/",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": {
+        "name": "Петр Петров",
+        "phone": "+79997654321"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test OPTIONS for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}

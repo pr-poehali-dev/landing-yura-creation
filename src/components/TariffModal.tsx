@@ -34,19 +34,31 @@ const TariffModal = ({ isOpen, onClose, tariffName }: TariffModalProps) => {
     try {
       const recaptchaToken = await executeRecaptcha('submit_tariff_form');
 
-      const response = await fetch('https://functions.poehali.dev/95830b61-9b82-45e6-b96c-bcb5ef3bbf7b', {
+      const formPayload = {
+        ...formData,
+        tariff: tariffName,
+        recaptchaToken
+      };
+
+      // Send to Telegram
+      const telegramResponse = await fetch('https://functions.poehali.dev/95830b61-9b82-45e6-b96c-bcb5ef3bbf7b', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          tariff: tariffName,
-          recaptchaToken
-        })
+        body: JSON.stringify(formPayload)
       });
 
-      if (response.ok) {
+      // Send to Bitrix24
+      const bitrixResponse = await fetch('https://functions.poehali.dev/fb7f05cf-e9c2-467c-af4d-e76a9081a605', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formPayload)
+      });
+
+      if (telegramResponse.ok || bitrixResponse.ok) {
         setSubmitStatus('success');
         setTimeout(() => {
           onClose();
