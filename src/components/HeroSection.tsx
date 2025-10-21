@@ -21,7 +21,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
       <div className="max-w-[1460px] mx-auto relative z-10 w-full">
         <div className="text-center mb-4 md:mb-8 animate-fade-in">
           <div className="inline-flex items-center gap-2 text-blue-600 font-semibold text-xs md:text-base mb-3 md:mb-6">
-            <span>ЛУЧШАЯ CRM В РОССИИ</span>
+            <span>ЛУЧШЕЕ РЕШЕНИЕ КОРПОРАТИВНОГО ПОРТАЛА В РОССИИ</span>
             <Icon name="Sparkles" size={16} className="md:w-5 md:h-5" />
           </div>
         </div>
@@ -34,7 +34,7 @@ const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
               className="absolute -bottom-2 md:-bottom-4 left-1/2 w-[120%] h-auto -z-10 animate-float"
             />
             <span className="relative z-10">CRM</span>
-          </span><br className="md:hidden" /> Система Для<br />Вашего Бизнеса
+          </span><br className="md:hidden" /> Система Для<br />Бизнеса
         </h1>
 
         <p className="text-center text-gray-600 text-sm md:text-xl max-w-xs md:max-w-3xl mx-auto mb-8 md:mb-12 animate-fade-in leading-relaxed">

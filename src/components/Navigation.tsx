@@ -44,11 +44,6 @@ const Navigation = ({ mobileMenuOpen, setMobileMenuOpen, scrollToSection }: Navi
           <div className="flex items-center justify-between h-20">
             <div className={`flex items-center gap-3 transition-transform duration-300 ${mobileMenuOpen ? '-translate-x-full lg:translate-x-0' : 'translate-x-0'}`}>
               <img 
-                src="https://cdn.poehali.dev/files/6ccab083-e2ef-4108-be78-8dfa31532525.png" 
-                alt="ЦАВ" 
-                className="h-10 sm:h-12 w-auto object-contain"
-              />
-              <img 
                 src="https://cdn.poehali.dev/files/c857b3d6-aebf-4ad0-afad-3b5aed8530cb.png" 
                 alt="Центр автоматизаций и внедрений" 
                 className="h-8 sm:h-10 w-auto object-contain"
